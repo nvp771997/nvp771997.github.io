@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>NVP</title>
+    <link rel="icon" href="photto/nvp.icon.png" />
+    <link rel="stylesheet" href="css/css.css">
+    <link rel="stylesheet" href="php/ex1.php">
+     
+     
+    <script src="https://kit.fontawesome.com/4ea34602d5.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+                   <h1> Học CSS</h1>
+        <h2>Cú pháp CSS</h2>
+        <img src="photto/css/1.png" width="700px">
+        <br>
+        <b>Có 3 phương pháp khai báo CSS để định dạng cho 1 phần tử trên trang web</b>
+        <ol>
+                    <li>Inline CSS (Nội tuyến)</li>
+                    <li>Internal CSS (Nội bộ)</li>
+                    <li>External CSS (Ngoại tuyến thường dc sữ dụng nhiều nhất)</li>
+        </ol>
+         <p>Ở dây tôi chỉ 1 cách khai  báo ngoại tuyến External mà thôi</p>
+         <p>Bước 1 tạo 1 tập tin có đuôi chấm là css</p>
+         <p>Bước 2 sữ dụng thẻ link để liên kết đến tập tin css, bằng cú pháp: <mark>&lt;link rel="stylesheet" href="đường dẫn.css"></mark></p>
+         <p>Bước 3 là định dạng cho phần tử HTML</p>
+          <b>Lưu ý</b>: khi sđ cách khai báo External thì trong tập tin CSS ko cần khai báo thẻ style
+        
+        <hr>
+
+        <h2>Bộ chọn trong CSS</h2>
+        <p><b>Khái niệm</b>:Bộ chọn CSS được sử dụng để "tìm" 
+       (hoặc chọn) các phần tử HTML mà bạn muốn tạo kiểu.</p>
+       <h3>1) Bộ chọn phần tử CSS</h3>
+       <p>Bộ chọn này dựa trên tên của phần tử</p>
+       <b>VD:</b>
+       <pre style="background-color: yellow; width: 500px;">
+           p {
+               text-align: center;
+               color: red;
+             }
+       </pre>
+
+       <h3>2) Bộ chọn ID</h3>
+       <p>Để chọn 1 phần tử id cụ thể ta sđ ký tự # theo sau là tên id của phần tử.</p>
+       <b>VD:</b>
+       <pre style="background-color: yellow; width: 500px;">
+             #nameid {
+              text-align: center;
+              color: red; 
+             }
+       </pre>
+       
+
+       <h3>3) Bộ chọn Class</h3>
+       <p>Để chọn 1 phần tử class cụ thể ta sđ ký tự . theo sau là tên class.</p>
+       <b>VD:</b>
+       <pre style="background-color: yellow; width: 500px;">
+              .nameclass {
+                text-align: center;
+                color: red;
+              }
+       </pre>
+       <p>Bạn cũng có thể chỉ định rằng chỉ các phần tử HTML cụ thể mới bị ảnh hưởng bởi một lớp.</p>
+       <b>VD:</b>
+       <pre style="background-color: yellow; width: 500px;"> 
+              p.nameclass {
+                text-align: center;
+                color: red;
+              }
+
+              &lt;h1 class="nameclass"> Tieu de &lt;/h1>
+              &lt;p class="nameclass"> Tieu de &lt;/p>
+
+              <b>Run:</b>
+              <hr>
+              <p>Tieu de</p>
+              <p style="text-align: center; color: red; "> Tieu de </p>
+              <hr>
+       </pre>
+       <p>Các phần tử HTML cũng có thể tham chiếu đến nhiều hơn một lớp.</p>
+
+       <h3>Bộ chọn tất cả *</h3>
+       <p>Bộ chọn chung (*) chọn tất cả các thành phần HTML trên trang</p>
+       <b>VD:</b>
+       <pre style="background-color: yellow; width: 500px;">
+             * {
+                  text-align: center;
+                  color: red;
+             }
+       </pre>
+
+       <h3>Bộ chọn nhóm CSS</h3>
+       <p>Bộ chọn nhóm chọn tất cả các thành phần HTML có cùng định nghĩa kiểu.</p>
+       <b>VD:</b>
+       <pre style="background-color: yellow; width: 500px;">
+           h1, h2, p {
+                text-align: center;
+                color: red;
+           }
+       </pre>
+       
+
+       <hr>
+
+       <h2>Màu trong CSS</h2>
+       <p>Thông thường thì sđ 3 loại giá trị màu sắc sau dây:</p>
+       <ol>
+           <li>Giá trị bằng màu</li>
+           <li>Giá trị RGB và RGBA</li>
+           <li>Giá trị HEX</li>
+       </ol>
+       <h3>1) Giá trị màu bằng tên màu (dễ bỏ qua, chỉ cần nhập tên màu mà mày biết)</h3>
+      <h3>2) Giá trị màu RGB và RGBA</h3>
+      <h3>2.1) RGB:</h3>
+      <b>Công thức: </p>
+      <pre><b></b><mark>rgb(red,green,blue)</b></mark></pre>
+      <p>Trong đó, các thêm số <b>red,green,blue</b> phải nhận giá trị từ <mark>0 đến 255</mark></p>
+      <b>VD:</b>
+      <pre>
+             color: rgb(0,0,0) là màu đen
+             color: rgb(255,255,255) là màu trắng
+                      <p style="color: rgb(0,0,0); font-size: 40px;">VD</p> <p style="color: rgb(255,255,255); font-size: 40px;">VD</p>
+                     
+      </pre>
+      
+      <h3>2.2) RGBA</h3>
+      <b>Công thức:</b>
+      <pre><mark><b>rgba(red, green, blue, alpha)</b></mark></pre>
+      <p>Thám số này giống với giá trị trên nhưng mà có thêm 1 tham số alpha (để tạo ra độ trong suốt)</p>
+      <p>Tham số alpha nhận giá trị từ <mark>0,0 (hoàn toàn trong suốt) đến 1.0(hoàn toàn ko trong suốt))</mark></p>
+      <b>VD:</b>
+      <pre>
+            color: rgba(109, 0, 255, 1); là màu tím và có độ trong suốt là bình thường
+            color: rgba(109, 0, 255, 0.5);
+            <p style="color: rgba(109, 0, 255, 1); font-size: 40px;">VD</p><p style="color: rgba(109, 0, 255, 0.5); font-size: 40px;">VD</p>
+            
+      </pre>
+
+      <h3>3) Giá trị HEX</h3>
+      <p>Trong CSS, một màu có thể được chỉ định bằng cách sử dụng giá trị thập lục phân ở dạng:</p>
+      <b><mark># rrggbb</mark></b>
+
+
+      <hr>
+
+
+      <h2>Nền CSS (Background CSS)</h2>
+      <h3>1) Màu Nền  (background-color)</h3>
+      <p>Thuộc tính này chỉ định màu nền cho phần tử</p>
+      <b>VD:</b>
+      <p style="background-color: violet; width: 400px;">Đây là màu nền</p>
+      <b>Chú ý:</b><p>Chúng ta có thể chỉnh độ trong suốt của màu nền bằng thuộc tính <mark>opacity</mark></p>
+      <p>Thuộc tính opacity dùng để chỉnh độ mờ hay trong suốt của 1 phần tử. Nó nhận giá trị từ <mark>0 đến 1.0</mark> giá trị càng thấp thì càng mờ </p>
+      <b>VD:</b>
+      <p style="background-color: violet; width: 400px; opacity: 0.3;">Đây là màu nền có nhận giá trị trong suốt</p>
+      <b>Lưu ý: Khi sử dụng thuộc opacitytính để thêm độ trong suốt vào nền của một phần tử, tất cả các phần tử con của nó sẽ kế thừa cùng một độ trong suốt. Điều này có thể làm cho văn bản bên trong một phần tử hoàn toàn trong suốt khó đọc.</b>
+      
+
+      <h3>2) Hình nền (background-image)</h3>
+      <p>Thuộc tính này chỉ định 1 hình ảnh để làm hình nền cho 1 phần tử</p>
+      <b>Cách sữ dụng:</b><mark>background-image: url("đường_dẫn_ảnh_.tên_mềm")</mark>
+      <b>VD:</b>
+      <div style="background-image: url(photto/nakroth.jpg); width: 300px; height: 300px; color: red;">
+         <p>Nền bằng hình ảnh kết hợp với vb nó sẽ trở nên khó đọc</p>
+      </div>
+      <h3>3) Bối cảnh lặp</h3>
+      <b>Theo mặc định, thuộc tính background-image lặp lại một hình ảnh theo cả chiều ngang và chiều dọc.</b>
+      <div style="background-image: url(photto/nvp.icon.png); width: 300px; height: 300px; color: red;">
+        <p>Nền bằng hình ảnh kết hợp với vb nó sẽ trở nên khó đọc</p>
+     </div>
+      <b>Cách để hình nền lặp lại theo chiều ngang và chiều dọc:</b><br>
+      <p>Theo chiều ngang:<mark>background-repeat: repeat-x;</mark></p> 
+      <p>Theo chiều dọc:<mark>background-repeat: repeat-y;</mark></p>
+     
+      <div style="
+       background-image: url(photto/nvp.icon.png); 
+       background-repeat: repeat-x; 
+       width: 200px; 
+       height: 200px; 
+       color: red;
+       ">
+        <p>Nền bằng hình ảnh kết hợp với vb nó sẽ trở nên khó đọc</p>
+     </div>
+     <div style="
+      background-image: url(photto/nvp.icon.png);
+      background-repeat: repeat-y; 
+      width: 300px; 
+      height: 300px; 
+      color: red;
+      ">
+      <p>Nền bằng hình ảnh kết hợp với vb nó sẽ trở nên khó đọc</p>
+   </div>
+   <p><b>Cách khắc phục lỗi lặp lại bằng cú pháp: </b><mar>background-repeat: no-repeat;</mar></p>
+   
+   <div style="
+   background-image: url(photto/nvp.icon.png);
+     background-repeat: no-repeat;
+     width: 100px; 
+     height: 100px; 
+     color: red;"
+     >
+    <p>Nền bằng hình ảnh kết hợp với vb nó sẽ trở nên khó đọc</p>
+ </div>
+
+
+
+  <h3>4) Vị trí nền (background-position)</h3>
+  <p><b>Cú pháp:</b><mark>background-position: giá trị;</mark></p>
+  <p>Nhận các giá trị sau: top,right, left, bottom</p>
+
+
+ <div style="
+ background-image: url(photto/nvp.icon.png);
+   background-repeat: no-repeat;
+   width: 200px; 
+   height: 200px; 
+   color: red;
+   background-position:  right top;
+   ">
+  <p>Nền bằng hình ảnh kết hợp với vb nó sẽ trở nên khó đọc</p>
+</div>
+
+
+<h3>5) Tệp định kèm (background-attachment)</h3>
+<p>chỉ định xem hình nền sẽ cuộn hay cố định (sẽ không cuộn với phần còn lại của trang)</p>
+ <p><b>Cố định</b>: background-attachment: fixed;</p>
+ 
+ <div style="
+  
+ background-image: url(photto/nvp.icon.png);
+ background-repeat: no-repeat;
+ width: 200px; 
+ height: 200px; 
+ color: red;
+ background-position:  right top;
+ overflow-x:hidden;
+ overflow-y:auto;
+  
+ "> 
+  <p>Nền bằng hình ảnh kết hợp với vb nó sẽ trở nên khó đọc</p>
+  <p>.....................</p>
+  <p>.....................</p>
+  <p>.....................</p>
+  <p>.....................</p>
+  <p>.....................</p>
+  <p>.....................</p>
+  <p>.....................</p>
+ </div>
+
+ <p><b>Không cố định</b>: background-attachment: scroll;</p>
+ 
+ 
+ <h3>6) Tốc ký nền (gộp lại nhiều cái trên thành 1 hàng)</h3>
+ <p><b>Cú pháp:</b> <mark>background: color image repeat position;</mark></p>
+ <ol>
+    <li>color: màu nền</li>
+    <li>image: hình nền</li>
+    <li>repeat: chỉnh độ lặp lại của ảnh</li>
+    <li>positon: chọn vị trí cho hình nền</li>
+ </ol> 
+ <b>Sẽ không có vấn đề gì nếu một trong các giá trị thuộc tính bị thiếu, miễn là các giá trị khác theo thứ tự này. </b>
+ <p><b>Lưu ý:</b>Ko có sữ dụng background-attachment trên cú pháp trên vì nó ko có giá trị</p>
+
+
+<hr>
+
+
+   <h2>Đường viền CSS</h2>
+   <p><b>Cú pháp:</b>borde: width style color</p>
+   <p><b>1) width</b>: là kích thước của đường viền</p>
+   <p><b>2) style</b>: kiều đường viền.Nhận các giá trị sau:</p>
+    <div>
+         <p style="border: 1px dotted;">dotted</p>
+         <p style="border: 1px dashed;">dashed</p>
+         <p style="border: 1px solid;">solid</p>
+         <p style="border: 1px double;">double</p>
+         <p style="border: 1px groove;">groove</p>
+         <p style="border: 1px ridge;">ridge</p>
+         <p style="border: 1px inset;">inset</p>
+         <p style="border: 1px outset;">outset</p>
+         <p style="border: 1px none;">none</p>
+         <p style="border: 1px hidden;">hidden</p>
+          
+     
+    </div>
+   <p><b>3) color</b>: màu của đường viền</p>
+   <p style="border: 1px outset red;">outset</p>
+   <h3>Độ cong của đường viền</h3>
+   <p><b>Cú pháp:</b>border-radius: value px</p>
+   <p><b>VD:</b></p>
+   <p style="
+   border: 3px solid violet;
+   border-radius: 10px;">Độ cong của đường viền</p>
+
+    <hr>
+
+
+    <h2>Lề trong CSS (margin)</h2>
+    <p>Lề là khoảng cách từ đường viền của phần tử này đến phần tử khác</p>
+    <p><b>CSS có các thuộc tính để chỉ định lề cho mỗi bên của phần tử:</b></p>
+    <ul>
+      <li>margin-top</li>
+      <li>margin-right</li>
+      <li>margin-bottom</li>
+      <li>margin-left</li>
+    </ul>
+    <b>Cú pháp thu gọn:<mark>margin: top right bottom left</mark></b>
+    <div style="border: 1px solid violet; width: 700px;">
+    <p style="
+      border: 2px solid red;
+      margin: 10px 15px 20px 25px;
+      width: 200px;
+    ">Margin</p>
+</div>
+<P><b>Giá trị tự động</b></P>
+<p><b><mark>margin: auto;</mark></b></p>
+<p>Lề sẽ dc chia đều trái và phải</p>
+<div style="border: 1px solid violet; width: 700px;">
+  <p style="
+    border: 2px solid red;
+    margin: auto;
+    width: 200px;
+  ">Margin auto</p>
+</div>
+
+   <hr>
+
+      <h2>Vùng đệm (padding)</h2>
+      <p>Vùng đệm là khoảng cách nằm giữa của đường phần tử và phần nđ của phần tử</p>
+      <p><b>CSS có các thuộc tính để chỉ định lề cho mỗi bên của phần tử:</b></p>
+      <ul>
+        <li>padding-top</li>
+        <li>padding-right</li>
+        <li>padding-bottom</li>
+        <li>padding-left</li>
+      </ul>
+      <b>Cú pháp thu gọn:<mark>padding: top right bottom left</mark></b>
+      <div style="border: 1px solid violet; width: 700px;">
+      <p style="
+        border: 2px solid red;
+        margin: auto;
+        padding: 10px 15px 20px 25px;
+        width: 200px;
+
+      ">Margin</p>
+  </div>
+
+  <b>Cú pháp thu gọn: <mark>padding: top right bottom left</mark></b>
+     
+
+  <hr>
+
+  <h2>Chiều cao và chiều rộng tối đa của CSS</h2>
+  <b>width: chiều rộng</b>
+  <b>height: chiều cao</b>
+  <b>max-width: được sữ dụng để đặt chiều rộng tối đa cho 1 phần tử</b>
+
+
+  <h2>Mô hình hộp CSS</h2>
+  <b>VD:</b>
+  <img src="photto/nakroth.jpg" width="700px">
+  <div style="width: 700px; border: 1px solid black;">
+   <p>Mô Hình hộp CSS</p>
+  </div>
+
+       <hr>
+
+
+       <h2>Văn vản trong CSS</h2>
+       <h3>1) Màu văn bản (sữ dụng color và background-color)</h3>
+       <h3>2) Căn chỉnh văn bản</h3>
+       <p>Thuộc tính <b>text-align</b>dc sd để đặt căn chỉnh ngang của văn bản. VB có thể dc căn phải, căn trái, căn đều.</p>
+       <p><b>Cú pháp:</b><mark>text-align: value;</mark></p>
+       
+       <b>VD:</b>
+        <div style="border: 1px solid red;
+                    text-align: right;
+                    font-size: 20px;
+                    color: blue;
+        ">
+         <p>right</p>
+        </div>
+
+        <div style="border: 1px solid red;
+                    text-align: left;
+                    font-size: 20px;
+                    color: blue;
+        ">
+         <p>left</p>
+        </div>
+
+        <div style="border: 1px solid red;
+                    text-align: center;
+                    font-size: 20px;
+                    color: blue;
+        ">
+         <p>center</p>
+        </div>
+
+        <p><b>Chú ý</b>: khi text-align nhận giá trị là justify thì văn bàn sẽ dc <mark>căn đều 2 bên trái và phải</mark></p>
+        
+        <div style="border: 1px solid red;
+                     text-align: justify;
+                    font-size: 20px;
+                    color: blue;
+        ">
+         <p  >HTML là ngôn ngữ đầu tiên mà một nhà thiết kế web phải học. HTML được dùng để tạo ra các nội dung cho trang web, ví dụ như: hình ảnh, âm thanh, video, các liên kết, các đoạn văn bản. HTML cực kỳ dễ học. Đồng thời, chúng tôi xin giới thiệu đến các bạn loạt Tài liệu hướng dẫn học HTML đã được biên soạn kỹ lưỡng theo trình tự từ cơ bản đến nâng cao kèm theo nhiều ví dụ minh họa đơn giản dễ hiểu. Hứa hẹn sẽ giúp bạn đọc dễ dàng tiếp thu ngôn ngữ HTML trong thời gian ngắn nhất với khối lượng kiến thức đầy đủ nhất.</p>
+         
+        </div>
+
+        <b>Cách căn chỉnh vb ở cuối trang</b>
+        <p><b>Cú pháp:</b> <mark>text-align-last: value</mark></p>
+        <p><b>value</b>: nhận các giá trị sau: right, center, justify</p>
+
+
+        <h3>3) Khoảng cách của văn bản</h3>
+        <p><b><mark>text-indent: value;</mark></b> dùng để thụt lề dòng đầu tiên</p>
+        <p><b><mark>letter-spacing: value;</mark></b>khoảng cách giữa các ký tự trong văn bản.</p>
+        <p><b><mark>line-height: value;</mark></b>chỉ định khoảng cách giữa các dòng</p>
+        <p><b><mark>word-spacing: value;</mark></b> chỉ định khoảng cách giữa các từ trong văn bản</p>
+   
+
+   <h3>4) Bóng của văn bản</h3>
+   <p><b>Cú pháp:</b><mark>text-shadow: bóng_ngang bóng_dọc độ_mờ màu</mark></p>
+   <p><b>VD: text-shadow: 2px 2px 5px violet</b></p>
+   <p style="
+         text-shadow: 2px 2px 5px darkorchid;
+         font-size: 100px;
+   ">Nakroth</p>
+   <p style="
+   text-shadow: 21px 21px 5px darkorchid;
+   font-size: 100px;
+">Nakroth</p>
+
+<p style="
+         text-shadow: 21px 21px 5px darkorchid, 0px 0px 7px red, 3px 3px 1px greenyellow;
+         font-size: 100px;
+   ">Nakroth</p>
+
+
+     <hr>
+
+
+     <h2>Phong chữ trong CSS</h2>
+     <p><b>Cú pháp: </b><mark>font-family: value;</mark></p>
+
+
+      <hr>
+
+
+
+      <h2>Biểu tượng trong CSS</h2>
+      <p>Tìm hiều chi tiết: <a href="https://www.w3schools.com/css/css_icons.asp" style="color: rgb(151, 42, 219);">Tại đây!</a></p>
+      <i class="fas fa-cloud"></i>
+      <i class="fab fa-android" style="color: red;"></i>
+      <i class="fas fa-ankh" style="color: rgb(39, 236, 39);"></i>
+      <i class="fab fa-app-store-ios" style="color: rgb(103, 23, 233);"></i>
+
+      
+     <hr>
+
+
+     <h2>Liên kết trong CSS</h2>
+     <h3>1) Màu liên kết</h3>
+     <h3>2) Cách xóa dấu gạch dưới nút liên kiết</h3>
+     <p><b>Cú pháp:</b> <mark>text-decoration: none;</mark></p>
+     <p ><b>VD:</b><a href="https://www.w3schools.com/css/css_link.asp" style="text-decoration: none;">Link liên kết!</a></p>
+      
+
+      <h3>3) Trạng thái của liên kết</h3>
+      <p><b>Có 4 trạng thái cơ bản:</b></p>
+      <ul>
+         <li><mark>a:link</mark>- một liên kết bình thường, chưa được truy cập</li>
+         <li><mark>a:visited</mark>- một liên kết mà người dùng đã truy cập</li>
+         <li><mark>a:hover</mark>- một liên kết khi người dùng di chuột qua nó</li>
+         <li><mark>a:active</mark>- một liên kết ngay khi nó được nhấp vào</li>
+      </ul>
+
+
+
+      <h3>4) Nút liên kết</h3>
+      <a href="https://www.w3schools.com/css/css_link.asp">Coi tại dây</a>
+
+
+
+      <hr>
+
+      <h2>Danh sách </h2>
+      <a href="https://www.w3schools.com/css/css_list.asp">Coi tại đây!</a>
+
+
+      <hr>
+
+
+      <h2>Bảng trong CSS</h2>
+
+      <a href="https://www.w3schools.com/css/css_table.asp">Coi tại đây!</a>
+
+     <hr>
+
+
+     <h2>Kiểu hiển thị phần tử (Display)</h2>
+     <a href="https://www.w3schools.com/css/css_display_visibility.asp">Coi tại đây!</a>
+
+
+
+     <hr>
+
+
+     <h2>Vị trí trong CSS (Position)</h2>
+     <a href="https://www.w3schools.com/css/css_positioning.asp">Coi chi tiết tại đây!</a>
+     <p>Thuộc positiontính chỉ định loại phương pháp định vị được sử dụng cho một phần tử.</p>
+     <p><b>Cú pháp:</b> <mark>positon: vlaue</mark></p>
+     <p>Nhận 5 giá trị sau dây</p>
+     <ol>
+         <li><b>static</b></li>
+         <li><b>relative</b></li>
+         <li><b>fixed</b></li>
+         <li><b>absolute</b></li>
+         <li><b>sticky</b></li>
+     </ol>
+     <h3>1) Định vị static</h3>
+     <p>Định vị static là phương thức định vị mặc định của hầu hết các phần tử</p>
+     <p><b>Cú pháp:</b> <mark>position: static;</mark></p>
+     <p><b>Chú ý</b>: đối với loại phương thức này chúng ta không thể sử dụng các thuộc tính top, right, bottom, left để thiết lập lại vị trí cho phần tử.</p>
+      
+     <h3>2) Định vị relative</h3>
+     <p>Định vị relative cũng giống như định vị static phần tử sẽ xuất hiện ở vị trí mặc định dựa theo thứ tự khai báo. Nhưng mà sữ đụng các thuộc tính: <mark>top, right, bottom, left</mark> để thiết lập lại vị trí cho các phần tử.</p>
+     <p><b>Cú pháp:</b> <mark>position: relative;</mark></p> 
+     <p><b>Chú ý:</b> Khi mà muốn thiết lập lại vị trí cho phần tử giữa thuộc tính <mark>top và bottom</mark> thì chúng ta chỉ có thể <i>sữ dụng một thuộc tính , giữa hai thuộc tính <mark>left và right</mark> cũng như vậy:</i></p>
+        <ul>
+           <li>Khi sữ dụng <mark>top</mark> mà nó nhận giá trị dương thì phần tử sẽ di chuyển xuống dưới, âm thì di chuyển lên trên</li>
+           <li>Khi sữ dụng <mark>left</mark> mà nó nhận giá trị dương thì phần tử sẽ di chuyển sang phải, âm thì di chuyển sang trái</li>
+        </ul>
+          
+        <p><b>VD:</b></p>
+        <pre>
+                position: relative;
+                top: 20px;
+                left: 30px'
+        </pre>
+
+        <div style="
+            border: 1px solid blue;
+            
+        " 
+        >
+           <p style="
+           border: 1px solid red;
+           text-align: center;
+           position: relative;
+           " 
+           >Phần tử bình thường khi sữ dụng relative mà ko sđ top, left</p>
+        </div>
+        <br>
+        <div style="
+            border: 1px solid blue;
+            
+        " 
+        >
+           <p style="
+           border: 1px solid red;
+           text-align: center;
+           position: relative;
+            top: 20px;
+            left: 30px;
+           " 
+           >Phần tử sẽ di chuyển xuống dưới 20px và di chuyển sang trái 30px</p>
+        </div>
+
+          <br><br>
+
+          <h3>3) Định vị fixed</h3>
+          <p>Định vị fixed có thể xem là định vị đặc biệt nhất trong 4 định vị, nó dc dùng để thiết lập vị trí cố định cho phần tử mà khi bạn cuộn trang lên xuống thì nó luôn dứng yên tại 1 chỗ</p>
+           <p>Đối với phương thức định vị fixed, khi chúng ta sử dụng các thuộc tính top, right, bottom, left để thiết lập vị trí cho phần tử thì vị trí của phần tử sẽ được xác định dựa theo khung trang web.</p>
+           <p><b>Cú pháp:</b> <mark>position: fixed;</mark></p>
+           <p>Đồng thời sử dụng thêm thuộc tính <mark>top, right, bottom, left</mark> để thiết lập vị trí mới cho phần tử cố định</p>
+           <p><b>Lưu ý: Đối với phương thức định vị fixed, <mark>nếu chúng ta không thiết lập chiều rộng</mark> cho phần tử mà lại sử dụng đồng thời hai thuộc tính left & right thì chiều rộng của phần tử sẽ bị
+             kéo dài từ vị trí left cho đến vị trí right. Tương tự, <mark>nếu chúng ta không thiết lập chiều cao</mark> cho phần tử mà lại sử dụng đồng thời hai thuộc tính top & bottom thì chiều cao của phần tử sẽ bị kéo dài từ vị trí top cho đến vị trí bottom.</b></p>
+ 
+        <h3>4) Định vị absolute</h3>
+        <p>Định vị absolute dùng để thiết lập vị trí cho một phần tử dựa theo 
+          vị trí của phần tử tổ tiên (được thiết lập thuộc tính position với một trong 
+          các giá trị: relative, fixed, absolute) nằm gần với nó nhất, nếu không có phần tử tổ tiên nào được 
+          thiết lập thuộc tính position với một trong ba giá trị trên thì vị trí của phần
+           tử sẽ được xác định dựa theo khung trang web.</p>
+
+          <p><b>Cú pháp:</b> <mark>position: absolute;</mark></p>
+          <p><b>VD:</b></p>
+
+          <div style="
+          border: 1px solid red;
+          width: 400px;
+          height: 200px;
+          ">
+              <div style="
+              border: 1px solid blue;
+              position: relative;
+              top: 50px;
+              left: 30px;
+              width: 70px;
+              height: 70px;
+              ">
+                <div style="
+                border: 1px solid green;
+                position:   absolute;
+                top: 40px;
+                right: 0px;
+                width: 30px;
+                height: 20px;
+                ">
+
+                </div>
+              </div>
+              
+          </div>
+           
+
+
+          <h3>5) Định vị sticky (đính)</h3>
+          <p>Phần tử cố định chuyển đổi giữa relativevà fixed, tùy thuộc vào vị trí cuộn.
+            Nó được định vị tương đối cho đến khi một vị trí bù nhất định
+             được đáp ứng trong chế độ xem - sau đó nó "dính" vào vị trí (như vị trí: cố định).</p>
+
+          <p><b>Cú pháp:</b> <mark>position: sticky;</mark></p>
+          
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+    </body>
+
+</html>
