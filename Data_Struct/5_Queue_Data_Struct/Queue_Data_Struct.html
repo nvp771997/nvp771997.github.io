@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Queue Data Struct</title>
+    <style>
+      .syntax {
+        color: red;
+      }
+      pre {
+        background-color: rgb(11, 9, 9);
+        color: rgb(142, 89, 215);
+        width: 100%;
+        height: 50%;
+      }
+      i {
+        color: aliceblue;
+      }
+      h3 {
+        text-shadow: 2px 2px 5px rgb(255, 69, 106);
+        text-align: center;
+        font-size: 40px;
+      }
+      h1 {
+        text-align: center;
+        text-shadow: 2px 2px 5px violet;
+        font-size: 50px;
+      }
+      h2 {
+        text-align: center;
+        text-shadow: 2px 2px 5px rgb(29, 226, 11);
+        font-size: 50px;
+      }
+      h4 {
+        text-align: center;
+        text-shadow: 2px 2px 5px rgb(12, 209, 202);
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hàng đợi</h1>
+    <h3>Định nghĩa</h3>
+      
+    <p>- Queue là một cấu trúc dữ liệu tuyến tính trong đó các phần tử được thêm vào cuối và bị xóa khỏi đầu. Các phần tử trong queue được sắp xếp theo thứ tự <i class="syntax">FIFO (First In First Out)</i>, nghĩa là phần tử được thêm vào đầu tiên sẽ bị xóa khỏi đầu tiên.</p>
+    <p>- FIFO (viết tắt từ tiếng Anh: First In First Out), nghĩa là <i class="syntax">" vào trước ra trước"</i></p>
+    <p>Queue được định nghĩa bởi hai đầu: đầu <i class="syntax">(front)</i> và đuôi <i class="syntax">(rear)</i>. Đầu là vị trí nơi các phần tử được thêm vào, và đuôi là vị trí nơi các phần tử bị xóa khỏi. Queue luôn có một đầu và một đuôi, và chỉ có một phần tử ở đầu và một phần tử ở đuôi.</p>
+    <h2>Cài đặt hàng đợi bằng mảng</h2>
+
+    <pre><br>
+      #include < stdio.h>
+        int a[10000], maxN = 10000;
+        int n = 0;
+        int size(){
+            return n;
+        }
+        bool empty(){ <i>//Kiểm tra queue có rỗng ko</i>
+            return n==0;
+        }
+        void push(int x){ <i>//Thêm phần tử vào cuối queue</i>
+            if(n == maxN) return; <i>//Queue đầy ko thêm dc nữa</i>
+            a[n] = x;
+            ++n;
+        }
+        void pop(){ <i>//Xóa phần tử đầu tiên</i>
+            if(n == 0) return;
+            for(int i=0;i < n-1;i++){
+                a[i] = a[i+1];
+            }
+            --n;
+        }
+        int front(){ <i>//Lấy phần tử đâu tiên trong queue</i>
+            return a[0];
+        }
+        int main(){
+            for(int i=1;i<=7;i++){
+                push(i);
+            }
+            pop();
+            printf("%d\n",front());
+            printf("%d\n",size());
+            printf("%d\n",empty());
+            return 0;
+        }
+    </pre>
+
+
+
+    <h2>Cài đặt hàng đợi bằng DSLK</h2>
+    <pre><br>
+      #include < stdio.h>
+        #include < tdlib.h>
+        struct node{
+            int  data;
+            struct node *next;
+        };
+        typedef struct node node;
+        node *makeNode(int x){
+            node *newNode = (node*)malloc(sizeof(node));
+            newNode->data = x;
+            newNode->next = NULL;
+            return newNode;    
+        }
+        void push(node **queue, int x){ <i>//Thêm 1 phần tử vào cuối Queue</i>
+            node *newNode = makeNode(x);
+            if(*queue == NULL){
+                *queue = newNode;
+                return;
+            }
+            node *temp = *queue;
+            while(temp->next != NULL){
+                temp = temp->next;
+            }
+            temp->next = newNode;
+        }
+        void pop(node **queue){ <i>//Xóa phần tử đầu tiên trong queue</i>
+            if(*queue == NULL) return; <i>//Rỗng thì kúc thúc</i>
+            node *temp = *queue;
+            *queue = temp->next;
+            free(temp);
+        }
+        int size(node *queue){ <i>//Số lượng phần tử có trong Queue</i>
+            int n=0;
+            while(queue != NULL){
+                ++n;
+                queue = queue->next;
+            }
+            return n;
+        }
+        bool empty(node *queue){ <i>//Kiểm tra Queue có rỗng ko</i>
+            return queue==NULL;
+        }
+        int front(node *queue){ <i>//Lấy phần tử đầu tiên trong Queue</i>
+            return queue->data;
+        }
+        void duyet(node *queue){
+            while(queue != NULL){
+                printf("%d ",queue->data);
+                queue = queue->next;
+            }
+        }
+        int main(){
+            node *queue = NULL;
+            for(int i=1;i<=7;i++){
+                push(&queue,i);
+            }
+            pop(&queue);
+            push(&queue,99);
+            printf("%d %d\n",size(queue),empty(queue));
+            duyet(queue);
+        
+        }
+    </pre>
+  </body>
+</html>

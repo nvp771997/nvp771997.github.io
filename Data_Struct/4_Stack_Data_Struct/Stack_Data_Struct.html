@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stack Data Struct</title>
+    <style>
+      .syntax {
+        color: red;
+      }
+      pre {
+        background-color: rgb(11, 9, 9);
+        color: rgb(142, 89, 215);
+        width: 100%;
+        height: 50%;
+      }
+      i {
+        color: aliceblue;
+      }
+      h3 {
+        text-shadow: 2px 2px 5px rgb(255, 69, 106);
+        text-align: center;
+        font-size: 40px;
+      }
+      h1 {
+        text-align: center;
+        text-shadow: 2px 2px 5px violet;
+        font-size: 50px;
+      }
+      h2 {
+        text-align: center;
+        text-shadow: 2px 2px 5px rgb(29, 226, 11);
+        font-size: 50px;
+      }
+      h4 {
+        text-align: center;
+        text-shadow: 2px 2px 5px rgb(12, 209, 202);
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Ngăn xếp</h1>
+    <h3>Định nghĩa</h3>
+    <p>
+      - Stack là một cấu trúc dữ liệu tuyến tính hoạt động theo nguyên tắc
+      <i class="syntax">LIFO (Last In First Out)</i>. Tức là phần tử cuối cùng
+      được thêm vào stack sẽ là phần tử đầu tiên được lấy ra khỏi stack.
+    </p>
+    <p>
+      - Một ngăn xếp là một cấu trúc dữ liệu dạng thùng chứa (container) của các
+      phần tử (thường gọi là các nút (node)) và có hai phép toán cơ bản: <i class="syntax">push</i>
+      and <i class="syntax">pop</i>. Push bổ sung một phần tử vào đỉnh (top) của ngăn xếp, nghĩa là
+      sau các phần tử đã có trong ngăn xếp. Pop giải phóng và trả về phần tử
+      đang đứng ở đỉnh của ngăn xếp.
+    </p>
+    <h2>Ngăn xếp bằng Array</h2>
+    <pre><br>
+        <i></i>
+        #include < stdio.h>
+          int n = 0, stack[10000]; <i>//Khai bao 1 stack có tôi đa 10000 phần tử</i>
+          void push(int x){ <i>//Đẩy 1 phần tử vào </i>
+              stack[n] = x;
+              ++n;
+          }
+          void pop(){ <i>//Xóa 1 phần tử ra</i>
+              if(n >= 1)
+                  --n;
+          }
+          int top(){ <i>//Lấy 1 phần tử ở đỉnh stack</i>
+              return stack[n-1];
+          }
+          int size(){ <i>//số lượng phần tử trong stack</i>
+              return n;
+          }
+          
+          int main(){
+              for(int i=1;i<=7;i++){
+                  push(i); <i>//Đẩy phần tử vào stack</i>
+              }
+              printf("top = %d\n",top()); <i>//Lấy phần tử đỉnh stack</i>
+              pop(); <i>//Xóa 1 phần tử ở đỉnh stack</i>
+              for(int i=0;i < size();i++){
+                  printf("%d ",stack[i]); <i>//In Stack ra</i>
+              }
+              return 0;
+          }
+    </pre>
+    <h2>Ngăn xếp bằng Linked List</h2>
+    <pre><br>
+        #include < stdio.h>
+        #include < stdlib.h>
+        struct node{
+            int data;
+            struct node *next;
+        };
+        typedef struct node node;
+        node *makeNode(int x){ <i>Tạo 1 node</i>
+            node *newNode = (node*)malloc(sizeof(node));
+            newNode->data = x;
+            newNode->next = NULL;
+            return newNode;
+        }
+        void push(node **top, int x){ <i>//Đẩy 1 node vào stack</i>
+            node *newNode = makeNode(x);
+            newNode->next = *top;
+            *top = newNode;
+        }
+        void pop(node **top){ <i>//Xóa 1 node đầu tiên trong stack</i>
+            if(*top == NULL) return;
+            node *temp = *top;
+            *top = temp->next;
+            free(temp);
+        }
+        int Top(node *top){ <i>//Lấy node đầu tiên trong stack</i>
+             if(top != NULL) 
+              return top->data;
+        }
+        int size(node *top){ <i>//Số lượng node trong stack</i>
+            int n = 0;
+            while(top != NULL){
+                ++n;
+                top = top->next;
+            }
+            return n;
+        }
+        void duyet(node *top){ 
+            while(top != NULL){
+                printf("%d ",top->data);
+                top = top->next;
+            }
+        }
+        int main(){
+            node *top = NULL;
+            for(int i=1;i<=7;i++){
+                push(&top,i); <i>//Đẩy 7 phần tử vào stack</i>
+            }
+            duyet(top);
+            printf("top = %d\n",Top(top));
+            pop(&top);
+            printf("\n");
+            duyet(top);
+            return 0;
+        }
+    </pre>
+  </body>
+</html>

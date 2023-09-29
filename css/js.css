@@ -1,0 +1,33 @@
+
+a {
+                                                  color: red;
+                                                  border: 1px solid purple;
+}
+
+* {
+                                                  box-sizing: border-box;
+                                                  text-align: center;
+}
+
+
+.menu {
+                                                  display: flex;
+                                                  background-color: #333;
+}
+
+.menu a {
+                                                  color: rgb(243, 241, 241);
+                                                  padding: 1% 2%;
+                                                  text-decoration: none;
+                                                  text-align: center;
+}
+
+.menu a:hover {
+                                                  background-color: #efecec;
+                                                  color: black;
+}
+
+.body {
+                                                  display: flex;
+                                                  flex-wrap: wrap;
+}

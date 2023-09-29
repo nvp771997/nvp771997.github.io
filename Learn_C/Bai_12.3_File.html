@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hàm fseek và ftell</title>
+    <style>
+      .syntax {
+        color: red;
+      }
+      pre {
+        background-color: rgb(11, 9, 9);
+        color: rgb(142, 89, 215);
+        width: 100%;
+        height: 50%;
+      }
+      i {
+        color: aliceblue;
+      }
+      h3 {
+        text-shadow: 2px 2px 5px rgb(255, 69, 106);
+        text-align: center;
+        font-size: 30px;
+      }
+      h1 {
+        text-align: center;
+        text-shadow: 2px 2px 5px violet;
+        font-size: 50px;
+      }
+      h2 {
+        text-align: center;
+        text-shadow: 2px 2px 5px rgb(29, 226, 11);
+        font-size: 50px;
+      }
+      h5 {
+        text-align: center;
+        text-shadow: 2px 2px 5px rgb(240, 244, 25);
+         font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+     <h1>Hàm fseek và ftell</h1>
+     <h2>Hàm fseek</h2>
+     <p><b>Hàm fseek</b> được sữ dụng để di chuyển con trỏ file đến vị trí mong muốn</p>
+     <pre><br>
+        <i>Syntax</i>
+        int fseek(<i class="syntax">FILE *pointer</i>, long int offset, int position);
+     </pre>
+     <ul>
+         <li>pointer: con trỏ file</li>
+         <li>offset: số lượng byte di chuyển</li>
+         <li>position: vị trí bắt đầu di chuyển ->
+         <ul>
+               <li><i class="syntax">SEEK_END</i> : Bắt đầu từ cuối file</li>
+               <li><i class="syntax">SEEK_SET</i> : Bắt đầu từ đầu file</li>
+               <li><i class="syntax">SEEK_CUR</i> : Bắt đầu từ vị trí hiện tại</li>
+         </ul></li>
+     </ul>
+     <h2>Hàm ftell</h2>
+     <p><b>Hàm ftell</b> được sử dụng để chỉ ra vị trí của con trỏ file hiện tại, được tính bằng số byte từ đầu file từ vị trí hiện tại của con trỏ file.</p>
+     <pre><br>
+        <i>Syntax</i>
+        ftell(<i class="syntax">FILE *pointer</i>);
+     </pre>
+          <pre><br>
+        
+       #include < stdio.h>
+       #include < string.h>
+       int main(){
+          FILE *f;
+          f = fopen("input.txt", "r"); <i>//Read</i>
+           if(f == NULL){
+              printf("Khong ton tai\n");
+           }
+           else{
+             fseek(f, 0, SEEK_END); <i>//Con trỏ bắt đầu ở cuối file</i>
+             fseek(f, 0, SEEK_SET); <i>//Con trỏ bắt đầu ở đầu file</i>
+             fseek(f, 4, SEEK_SET); <i>//Con trỏ bắt đầu ở đầu file và ở vị trí 4 byte</i>
+             fseek(f, 3, SEEK_CUR); <i>//Con trỏ bắt đầu ở vị trí hiện tại</i>
+             printf("%d\n", ftell(f)); <i>//Từ vị trí đầu file đến vị trí của con trỏ hiện tại là bao nhiêu byte</i>
+           }
+          fclose(f);
+       }
+     </pre>
+  </body>
+</html>

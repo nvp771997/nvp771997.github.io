@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>String</title>
+    <style>
+      /* body {
+        background-image: url(photto/mo.jpg);
+       
+        background-size: 100%;
+      } */
+      pre {
+        background-color: rgb(11, 9, 9);
+        color: rgb(142, 89, 215);
+        width: 100%;
+        height: 50%;
+      }
+      i {
+          color: aliceblue;
+      }
+      h3 {
+        
+        text-shadow: 2px 2px 5px rgb(255, 69, 106);
+        text-align: center;
+        font-size: 30px;
+      }
+      h1 {
+        text-align: center;
+        text-shadow: 2px 2px 5px violet;
+        font-size: 50px;
+      }
+      h2 {
+        text-align: center;
+        text-shadow: 2px 2px 5px rgb(29, 226, 11);
+        font-size: 50px;
+      }
+    </style>
+    
+    </style>
+  </head>
+  <body>
+    <h1>Các hàm xử lý xâu thông dụng</h1>
+    <b>Các hàm này nằm trong thư viện <mark>ctype.h</mark></b>
+    <h3>Các hàm kiểm tra ký tự</h3>
+    <ul>
+      <li>isdigit(char c) : Kiểm tra chữ số</li>
+      <li>islower(char c) : Kiểm tra chữ in thường</li>
+      <li>isupper(char c) : Kiểm tra in hoa</li>
+      <li>isalpha(char c) : Kiểm tra chữ cái</li>
+      <li>tolower(char c) : Chuyển thành chữ in thường (ko làm thay đổi giá trị thực của chuỗi)</li>
+      <li>tolower(char c) : Chuyển thành chữ in thường (ko làm thay đổi giá trị thực của chuỗi)</li>
+      <li>toupper(char c) : Chuyển thành chữ in hoa </li>
+    </ul>
+    <pre><br>
+       #include < stdio.h >
+       #include < string.h >
+       #include < ctype.h >
+       int main()
+       {  
+           char c[] = "Nakroth777!!!!OK";
+           int lower = 0, upper = 0, digit = 0, alpha = 0;
+           for(int i=0;i < strlen(c);i++)
+           {
+               if(isdigit(c[i])) ++digit; <i>//Kiểm tra chữ số</i>
+               if(islower(c[i])) ++lower; <i>//Kiểm tra chữ in thường</i>
+               if(isupper(c[i])) ++upper; <i>//Kiểm tra chữ in hoa</i>
+               if(isalpha(c[i])) ++alpha; <i>//Kiểm tra chữ cái</i>
+           }
+           printf("%d %d %d %d\n",digit, lower, upper, alpha);
+       }
+    </pre>
+    <pre><br>
+         #include <stdio.h>
+         #include <string.h>
+         #include <ctype.h>
+         int main()
+         { 
+             char c[70] = "Nakroth";
+             c[0] = tolower(c[0]); <i>// Hàm chuyển thành chữ in thường</i>
+             printf("%s\n",c);
+             c[0] = toupper(c[0]); <i>//Hàm chuyển thành chữ in hoa</i>
+             printf("%s\n",c);
+         }
+    </pre>
+    <h3>Hàm strlwr</h3>
+    <p><b>Cú pháp:</b> char* strlwr(char[]);</p>
+    <p><b>Chức năng:</b> Chuyển xâu kí tự <mark>về dạng in thường</mark>, ngoài ra <u>còn trả về con trỏ tới mảng</u> này sau khi chuyển đổi</p>
+    <pre> <br>
+      #include < stdio.h >
+      #include < string.h >
+        int main()
+        {
+            char c[] = "NAKROTH";
+            char *a = strlwr(c); <i>// Hàm chuyển chuổi chữ in thành chữ thường</i>
+            printf("%s\n",c);
+            printf("%s\n",a);  
+            <i>//Output: nakroth</i>  
+        }
+    </pre>
+    <h4>Xây dụng hàm strlwr</h4>
+    <pre><br>
+      #include < stdio.h >
+      #include < string.h >
+      #include < ctype.h >
+        void lower(char c[]){
+            for(int i=0;i < strlen(c);i++)
+            {
+                c[i] = tolower(c[i]); // Phải gán giá trị cho c[i] vì tolwer ko làm thay đổi mảng ký tự
+            }
+        }
+        int main()
+        {
+            char c[] = "NAKROTH";
+            lower(c);
+            printf("%s\n",c);  
+            <i>//Output: nakroth</i>  
+        }
+    </pre>
+    <h3>Hàm strupr</h3>
+    <p><b>Cú pháp:</b> char* strupr(char[]);</p>
+    <p><b>Chức năng:</b> Chuyển xâu kí tự về dạng in hoa, ngoài ra còn trả về con trỏ tới mảng này sau khi chuyển đổi.</p>
+    <pre> <br>
+      #include < stdio.h >
+      #include < string.h >
+      #include < ctype.h >
+        int main()
+        {
+            char c[] = "nakroth";
+            strupr(c); <i>//Hàm chuyển chuổi ký tự thường thành in hoa</i>
+            printf("%s\n",c);  
+            <i>//Output: NAKROTH</i>  
+        }
+    </pre>
+    <h4>Xây dựng hàm strupr</h4>
+    <pre><br>
+      #include < stdio.h >
+      #include < string.h >
+      #include < ctype.h >
+        void upper(char c[])
+        {
+            for(int i=0;i < strlen(c);i++)
+            {
+                c[i] = toupper(c[i]);
+            }
+        }
+        int main()
+        {
+            char c[] = "nakroth";
+            upper(c); //Hàm chuyển chuổi ký tự thường thành in hoa
+            printf("%s\n",c);  
+            <i>//Output: NAKROTH</i> 
+        }
+    </pre>
+    <h3>Hàm strcmp</h3>
+    <p><b>Cú pháp:</b> <mark>int</mark> strcmp(char a[], char b[]);</p>
+    <p><b>Chức năng:</b> Hàm này dùng để <mark>so sánh 2 xâu</mark> theo thứ tự từ điển</p>
+    <b>Giá trị trả về:</b>
+    <ul>
+      <li>Nếu <mark>a < b</mark> trả về -1</li>
+      <li>Nếu <mark>a > b</mark> trả về 1</li>
+      <li>Nếu <mark>a = b</mark> trả về 0</li>
+    </ul>
+    <pre><br>
+      #include < stdio.h >
+      #include < string.h >
+      #include < ctype.h >
+         
+        int main()
+        {
+           char c[] = "Nakroth";
+           char d[] = "ZNakroth";
+           char p[] = "Nakroth";
+           printf("%d ", strcmp(c,d));
+           printf("%d ", strcmp(c,p));
+           printf("%d ", strcmp(d,p));
+           <i>// Output: -1 0 1</i>
+        }
+    </pre>
+    <h3>Hàm strcat</h3>
+    <p><b>Cú pháp:</b> char* strcat(char dich[], char nguon[]);</p>
+    <p><b>Chức năng:</b> <mark>Nối xâu nguồn vào xâu đích</mark>, ngoài ra còn trả về con trỏ tới mảng này sau khi nối.</p>
+    <pre><br>
+      #include < stdio.h >
+      #include < string.h >
+      #include < ctype.h >
+         
+        int main()
+        {
+           char c[] = "The Assassin ";
+           char d[] = "Nakroth";
+           strcat(c,d); <i>// Nối chuỗi d vào chuổi c</i>
+           printf("%s\n",c);
+           <i>//Output: The Assassin Nakroth</i>
+        }
+    </pre>
+    <h3>Hàm strcpy</h3>
+    <p><b>Cú pháp: </b> char* strcpy(char dich[], char nguon[]);</p>
+    <p><b>Chức năng:</b> Copy <mark>nội dung</mark> từ xâu nguồn vào xâu đích, 
+      <u>chú ý rằng trước khi copy, toàn bộ nội dung của xâu đích sẽ bị xóa hết</u>.
+       Ngoài ra còn trả về con trỏ tới mảng này sau khi copy.</p>
+    <pre><br>
+      #include < stdio.h >
+      #include < string.h >
+      #include < ctype.h >
+         
+        int main()
+        {
+           char c[] = "The Assassin ";
+           char d[] = "Nakroth";
+           strcpy(c,d); <i>// Trước khi copy thì nội dung của chuỗi c sẽ bị xóa hết.</i>
+           printf("%s\n",c);
+           <i>//Output: Nakroth</i>
+        }
+    </pre>
+    <h3>Hàm strrev</h3>
+    <p><b>Cú pháp: </b> char* strrev(char c[]);</p>
+    <p><b>Chức năng: </b> <mark>Lật ngược</mark> xâu c.</p>
+    <pre><br>
+      #include < stdio.h >
+      #include < string.h >
+      #include < ctype.h >
+         
+        int main()
+        {
+           char c[] = "Nakroth";
+           strrev(c);
+           printf("%s\n",c);
+           <i>//Output: htorkaN</i>
+        }
+    </pre>
+    <h3>Hàm strstr</h3>
+    <p><b>Cú pháp: </b>char* strstr(char c[], char d[]);</p>
+    <p><b>Chức năng: </b><mark>Trả về con trỏ</mark> <u>tới vị trí xuất hiện đầu tiên của xâu</u> d trong xâu c, 
+      nếu xâu d không xuất hiện trong xâu c nó trả về con trỏ NULL.
+       <mark>Hàm này được dùng để kiểm tra sự tồn tại của xâu con</mark>.</p>
+    <pre>
+      #include < stdio.h >
+      #include < string.h >
+      #include < ctype.h >
+         
+        int main()
+        {
+           char c[] = "Nakroth123OK";
+           char d[] = "th";
+           if(strstr(c,d) != NULL) printf("Found\n");
+           else printf("Not Found\n");
+           <i>//Output: Fuond</i>
+        }
+    </pre>
+    <h3>Hàm memset</h3>
+    <p><b>Chức năng: </b>Hàm memset được dùng để <mark>gán giá trị cho các ô nhớ</mark>, 
+      các bạn có thể dùng hàm này để gán giá trị <u>0 hoặc -1</u> cho mảng int.</p>
+    <pre><br>
+      #include < stdio.h >
+      #include < string.h >
+      #include < ctype.h >
+         
+        int main()
+        {
+           int a[7],b[7];
+           memset(a, 0, sizeof(a));
+           for(int i=0;i < 7;i++) printf("%d ",a[i]);
+           printf("\n");
+           memset(b, -1, sizeof(b));
+           for(int i=0;i < 7;i++) printf("%d ",b[i]);
+           <i>//Output: 0 0 0 0 0 0 0 và -1 -1 -1 -1 -1 -1 -1</i>
+                   
+        }
+    </pre>
+    <h3>Hàm atoi, atoll</h3>
+    <p><b>Chức năng: </b><mark>chuyển đổi</mark> các xâu kí tự sang số tương ứng. </p>
+    <ul>
+      <li>atoi : chuyển xâu sang số int</li>
+      <li>atoll : chuyển xâu sang số long long</li>
+    </ul>
+    <pre><br>
+      #include < stdio.h >
+      #include < string.h >
+      #include < ctype.h >
+      #include < stdlib.h > <i>// Thêm thư viện này để sữ dụng atoi và atoll </i>
+        int main()
+        {
+           char c[] = "007"; <i>// Chỉ sữ dụng chữ số</i>
+           char d[] = "7000000000";
+           int n = atoi(c);
+           long long p = atoll(d); 
+           printf("%d\n%lld\n",n,p);
+           <i>//Output: 7 7000000000</i>
+        }
+    </pre>
+    <h3>Hàm strtok</h3>
+     
+      <p>Hàm strtok có chức năng tách các từ trong xâu theo một kí tự chỉ đinh cho trước,
+         thông thường ta sẽ dùng strtok để tách các từ trong xâu theo dấu cách</p>
+         <pre><br>
+          #include < stdio.h >
+          #include < string.h >
+          #include < ctype.h >
+          #include < stdlib.h >
+            int main()
+            { 
+              char c[] = "The Assassin Nakroth";
+              char *p = strtok(c, " ");
+              while(p != NULL)
+              {
+                printf("%s\n",p);
+                p = strtok(NULL, " ");
+              }     
+            }
+            <i>Output:   The
+                      Assassin
+                      Nakroth
+    </i>
+         </pre>
+      <p>Hàm strtok còn có thể được dùng để tách theo nhiều kí tự khác nhau.</p>
+      <pre><br>
+        #include < stdio.h >
+        #include < string.h >
+        #include < ctype.h >
+        #include < stdlib.h >
+          int main()
+          { 
+            char c[] = "The-Assassin/Nakroth";
+            char *p = strtok(c, "-/");
+            while(p != NULL)
+            {
+              printf("%s\n",p);
+              p = strtok(NULL, "-/");
+            }     
+          }
+          <i>Output:   The
+                    Assassin
+                    Nakroth
+          </i>
+      </pre>
+     
+
+  </body>
+</html>

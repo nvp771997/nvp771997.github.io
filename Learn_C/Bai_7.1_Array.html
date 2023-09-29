@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài tập cơ bảng về Array 1</title>
+    <style>
+      /* body {
+        background-image: url(photto/mo.jpg);
+       
+        background-size: 100%;
+      } */
+      pre {
+        background-color: rgb(11, 9, 9);
+        color: rgb(142, 89, 215);
+        width: 100%;
+        height: 50%;
+      }
+      i {
+        color: aliceblue;
+      }
+      h3 {
+        text-shadow: 2px 2px 5px rgb(255, 69, 106);
+        text-align: center;
+        font-size: 30px;
+      }
+      h1 {
+        text-align: center;
+        text-shadow: 2px 2px 5px violet;
+        font-size: 50px;
+      }
+      h2 {
+        text-align: center;
+        text-shadow: 2px 2px 5px rgb(29, 226, 11);
+        font-size: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h2>Mảng đối xứng</h2>
+      <pre><br>
+          // Cách 1
+          int main()
+{
+    int n; scanf("%d",&n);
+    int a[n];
+    for(int i=0;i < n;i++) scanf("%d",&a[i]);
+    int kt=1;
+    int j=0;
+    for(int i=n-1;i>=0;i--){
+        
+        if(a[i] == a[j]){
+            j++;
+        }
+        else {
+            kt=0; break;
+        }
+    }
+    if(kt==1) printf("YES\n");
+    else printf("NO\n");
+ 
+}
+        </pre>
+      <pre><br>
+          // Cách  2
+    int dx(int a[], int n){
+    int l=0, r=n-1;
+    for(int i=0;i < n;i++){
+        if(a[l++] != a[r--]) return 0;
+    }
+    return 1;
+} 
+        </pre>
+      <pre><br>
+          // Cách 3
+          int dx(int a[], int n){
+    for(int i=0;i < n;i++){
+        if(a[i] != a[n-i-1]) return 0;
+    }
+    return 1;
+}
+        </pre>
+      <pre><br>
+          // Cách 4
+          int dx(int a[], int n){
+    int l = 0, r = n-1;
+    while(l<=r){
+        if(a[l] != a[r]) return 0;
+        ++l; --r;
+    }
+    return 1;
+}
+        </pre>
+    </div>
+    <h2>Lật ngược mảng</h2>
+    <pre><br>
+      void lat(int a[], int n){
+        int l=0, r=n-1;
+        while(l<=r){
+            int tmp = a[l];
+            a[l] = a[r];
+            a[r] = tmp;
+            ++l; --r;
+        }
+    }
+   </pre>
+   <h2>Kỹ thuật đọc tất cả các phần tử ở trong luồn vào ko biết trước</h2>
+   <pre><br>
+    while(scanf("%d",&tmp) != -1){
+      // Code
+ }
+   </pre>
+  </body>
+</html>

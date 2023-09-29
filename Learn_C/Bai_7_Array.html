@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="vn">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="charset" href="ly_thuyet_so.html">
+    <title>NVP</title>
+    <style>
+      /* body {
+        background-image: url(photto/mo.jpg);
+       
+        background-size: 100%;
+      } */
+      pre {
+        background-color: rgb(11, 9, 9);
+        color: rgb(142, 89, 215);
+        width: 70%;
+        height: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Array</h1>
+    <a href="ly_thuyet_so.html">Các dạng bài tập lý thuyết số</a><br>
+    <a href="sap_xep.html">Các thuật toán sắp xếp</a><br>
+    <a href="tim_kiem.html">Các thuật toán tìm kiếm</a>
+    <a href="Bai_7.1_Array.html">Các dạng bài tập cơ bản về mảng 1 chiều</a>
+    <div style="border: 1px solid red">
+      <h2>Array ?</h2>
+      <p><b>Array: </b></p>
+      <p>+ Là tập hợp các phần tử có cùng kiểu dữ liệu</p>
+      <p>+ Các phần tử trong mảng được lưu trữ nối tiếp nhau trong bộ nhớ</p>
+      <p>+ Các phần tử trong mảng có thể được truy cập thông qua các chỉ số</p>
+    </div>
+    <div>
+         <b>Xác định số phần tử của mảng:</b>
+         <pre><br>
+            size = sizeof(anArray)/sizeof(  < kiểu phần tử > )
+        </pre>
+    </div>
+    <div>
+      <h2>Các thao tác cơ bản trên mảng:</h2>
+      <h3>1) Chèn</h3>
+      <pre> <p style="color: aliceblue;">  // Cách 1: Không tối ưu</p> 
+                          
+              void chen(int a[], int n, int x, int k)
+              {
+                  int pos=n;
+                  --k;
+                for(int i=k;i  < n +1;i++)
+                  {
+                      a[pos+1] = a[pos];
+                      --pos;
+                  }
+                  a[k] = x;
+              }
+                  </pre>
+      <pre> <p style="color: aliceblue;">  // Cách 2: Tối ưu</p> 
+                          
+                    void chen(int a[], int n, int x, int k)
+                    {
+                        --k;
+                        for(int i=n;i>k;i--)
+                        {
+                            a[i] = a[i-1];
+                        }
+                        a[k] = x;
+                    }
+                     
+                  </pre>
+      <h3>2) Xóa</h3>
+                    <pre> <br>
+                    void xoa(int a[], int n, int x)
+                    {
+                        int kt=-1;
+                         for(int i=0;i < n;i++){
+                            if(a[i] == x){
+                                kt = i; break;
+                            }
+                         }
+                         if(kt == -1) {printf("NOT FOUND\n");}
+                         else {
+                            for(int i=kt;i < n;i++){
+                                a[i] = a[i+1];
+                            }
+                            for(int i=0;i < n-1;i++) printf("%d ",a[i]);
+                         }
+                    }   
+                  </pre>
+       <h3>3) Mảng đánh dấu</h3>
+       <p>Điều kiện: 0 <= a[i] < 10^7</p>
+       <p>Tư tưởng: Khai báo 1 mảng đếm lớn giá trị của mảng cần đếm, để dánh dấu sự xuất hiện của nó</p>
+              <h2>Đánh dấu 1 : Đếm xem có bao nhiêu giá trị khác nhau trong mảng?</h2>
+              <pre><br>
+                   #include < stdio.h >
+                    int dem[1000001]; // khai báo ngoài hàm main, các giá trị của dem đều bằng 0
+                    int main()
+                    {
+                        int n; scanf("%d",&n);
+                        int a[n];
+                        int max = -1e9;
+                        for(int i=0; i < n;i++)
+                        {
+                            scanf(" %d" , &a[i]);
+                            dem[a[i]] = 1; // dánh dấu số lần xuất hiện
+                            if(a[i] > max) max = a[i];
+                        }
+                        int cnt = 0;
+                        for(int i=0;i <= max;i++)
+                        {
+                            if(dem[i] != 0) cnt++;
+                        
+                        }
+                        printf(" %d\n" , cnt);
+                    }
+              </pre>
+
+              <h2>Đánh dấu 2 : Hãy liệt kê các giá trị xuất hiện trong mảng theo thứ tự từ nhỏ đến lớn kèm theo tần suất của nó</h2>
+              <pre><br>
+                #include < stdio.h >
+                  int dem[1000001];
+                  int main()
+                  {
+                      int n; scanf("%d",&n);
+                      int a[n];
+                      int max=-1e9;
+                      for(int i=0;i < n;i++)
+                      {
+                          scanf("%d",&a[i]);
+                          dem[a[i]]++;
+                          if(a[i] > max) max = a[i];
+                      }
+                      
+                      for(int i=0;i<=max;i++)
+                      {
+                          if(dem[i] != 0)
+                          {
+                              printf("%d %d\n",i,dem[i]);
+                          }
+                      
+                      }
+                       
+                  }
+              </pre>
+
+              <h2>Đánh dấu 3 : Hãy liệt kê các giá trị xuất hiện trong mảng theo thứ tự xuất hiện trong mảng kèm theo tần suất của nó, mỗi giá trị chỉ liệt kê một lần</h2>
+              <pre><br>
+                #include < stdio.h>
+                  int dem[1000001];
+                  int main()
+                  {
+                      int n; scanf("%d",&n);
+                      int a[n];
+                      int max=-1e9;
+                      for(int i=0;i < n;i++)
+                      {
+                          scanf("%d",&a[i]);
+                          dem[a[i]]++;
+                          //if(a[i] > max) max = a[i];
+                      }
+                      
+                      for(int i=0;i < n;i++)
+                      {    
+                          if(dem[a[i]] != 0) // Kiểm tra 
+                          {
+                              printf("%d %d\n",a[i],dem[a[i]]);
+                              dem[a[i]] = 0; // Kiểm tra xong thì cho dem về 0 để khi gặp thì không in ra
+                          }
+                      }
+                       
+                  }
+              </pre>
+
+              <h2>Đánh dấu 4: Hãy tìm giá trị có số lần xuất hiện nhiều nhất trong mảng, nếu có nhiều giá trị có cùng số lần xuất hiện thì lấy số có giá trị nhỏ nhất</h2>
+              <pre><br>
+                #include <stdio.h>
+                  int dem[1000001];
+                  int main()
+                  {
+                      int n; scanf("%d",&n);
+                      int a[n];
+                      int max=-1e9;
+                      for(int i=0;i < n;i++)
+                      {
+                          scanf("%d",&a[i]);
+                          dem[a[i]]++;
+                          if(a[i] > max) max = a[i];
+                      }
+                      int tansuat = 0, res;
+                      for(int i=0;i<=max;i++)
+                      {    
+                          if(dem[i] > tansuat)
+                          {
+                              tansuat = dem[i];
+                              res = i;
+                          }
+                      }
+                      printf("%d %d\n", res, tansuat);
+                       
+                  }
+              </pre>
+
+              <h2>Đánh dấu 5: Hãy tìm giá trị có số lần xuất hiện nhiều nhất trong mảng, nếu có nhiều giá trị có cùng số lần xuất hiện thì lấy giá trị xuất hiện trước theo thứ tự trong mảng</h2>
+              <pre><br>
+                #include <stdio.h>
+                  int dem[1000001];
+                  int main()
+                  {
+                      int n; scanf("%d",&n);
+                      int a[n];
+                      int max=-1e9;
+                      for(int i=0;i < n;i++)
+                      {
+                          scanf("%d",&a[i]);
+                          dem[a[i]]++;
+                          if(a[i] > max) max = a[i];
+                      }
+                      int tangsuat = 0, res;
+                      for(int i=0;i < n;i++)
+                      {    
+                          if(dem[a[i]] > tangsuat)
+                          {
+                              tangsuat = dem[a[i]];
+                              res = a[i];
+                          }
+                      }
+                      printf("%d %d\n", res, tangsuat);
+                       
+                  }
+              </pre>
+    </div>
+    <h2>Kỹ thuật xoay trái k lần</h2>
+    <pre> <br>
+        #include < stdio.h>
+            #include < math.h>
+            int main(){
+                int n,k; scanf("%d%d",&n,&k);
+                int a[n];
+                for(int i=0;i < n;i++) scanf("%d",a+i);
+                int tmp;
+                while(k--){
+                     tmp=a[0];
+                    for(int i=0;i < n;i++){
+                    a[i] = a[i+1];
+                }
+                a[n-1] = tmp;
+                }
+                
+                for(int i=0;i < n;i++) printf("%d ",a[i]);
+            }
+    </pre>
+     <h2>Kỹ thuật xoay phải k lần</h2>
+     <pre> <br>
+        #include < stdio.h>
+            #include < math.h>
+            int main(){
+                int n,k; scanf("%d%d",&n,&k);
+                int a[n];
+                for(int i=0;i < n;i++) scanf("%d",a+i);
+                int tmp;
+                while(k--){
+                     tmp=a[n-1];
+                    for(int i=n;i>=0;i--){
+                    a[i] = a[i-1];
+                }
+                a[0] = tmp;
+                }
+                
+                for(int i=0;i < n;i++) printf("%d ",a[i]);
+            }
+      </pre>
+      <h2>xóa các phần tử trong mảng sao cho không có 2 phần tử liền kề có giá trị giống nhau.</h2>
+      <pre><br>
+        #include < stdio.h>
+            #include < math.h>
+            int main(){
+                int n; scanf("%d",&n);
+                int a[n];
+                for(int i=0;i < n;i++) scanf("%d",a+i);
+                for(int i=0;i < n;i++){
+                    if(a[i] == a[i+1]){
+                        for(int j=i;j < n;j++){
+                           a[j] = a[j+1];
+                        }
+                        i--;
+                        n--;
+                    }
+                }
+                for(int i=0;i < n;i++) printf("%d ",a[i]);
+            }
+    </pre>
+    <h2>Cộng trừ</h2>
+    <pre><br>
+        #include < stdio.h>
+            #include < math.h>
+            int main(){
+                int n; scanf("%d",&n);
+                int a[n], b[n-1];
+                for(int i=0;i < n;i++) scanf("%d",a+i);
+                for(int i=0;i < n-1;i++) scanf("%d",b+i);
+                int tong=a[0];
+                for(int i=1;i < n;i++){
+                   if(b[i-1]==1){
+                     tong+=a[i];
+                   }
+                   else tong-=a[i];
+                }
+               printf("%d\n",tong);
+            }
+    </pre>
+  </body>
+</html>

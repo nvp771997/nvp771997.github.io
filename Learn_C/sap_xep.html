@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="vn">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="charset" href="ly_thuyet_so.html">
+    <title>NVP</title>
+    <style>
+      /* body {
+        background-image: url(photto/mo.jpg);
+       
+        background-size: 100%;
+      } */
+      pre {
+        background-color: rgb(11, 9, 9);
+        color: rgb(142, 89, 215);
+        width: 90%;
+        height: 50%;
+      }
+      i {
+          color: aliceblue;
+      }
+      h3 {
+        
+        text-shadow: 2px 2px 5px rgb(255, 69, 106);
+        text-align: center;
+        font-size: 30px;
+      }
+      h1 {
+        text-align: center;
+        text-shadow: 2px 2px 5px violet;
+        font-size: 50px;
+      }
+    </style>
+    
+  </head>
+  <body>
+    <h1 >Sorting algorithm</h1>
+     <a href="https://www.geeksforgeeks.org/sorting-algorithms/?ref=lbp">Các loại thuật toán sắp xếp</a>
+      <h3>Selection Sort</h3>
+      <p>Độ phức tập:<b> O(N^2)</b></p>
+      <p>Tư tưởng: Thuật toán liên tục chọn phần tử nhỏ nhất (hoặc lớn nhất) từ phần chưa sắp xếp của danh sách và hoán đổi nó với phần tử đầu tiên của phần chưa sắp xếp. Quá trình này được lặp lại cho phần chưa sắp xếp còn lại cho đến khi toàn bộ danh sách được sắp xếp</p>
+      <p>Phương pháp: tạo 1 biến lưu vị trí của phần tử nhỏ nhất, khi tìm thấy thì cho nó hoán đổi với vị trí a[i]</p>
+      <pre> <br>
+                  void SelectionSort(int a[], int n)
+                  {
+                     for(int i=0; i < n-1; i++) <i>// n-1: bước</i>
+                     {
+                         int min_pos = i; <i>// tìm chỉ số nhỏ nhất của phần tử</i>
+                         for(int j = i+1; j < n; j++) <i>// j = i+1 : i là xét phẩn tử chưa được sắp xếp </i>
+                         {                          <i>// và + 1 là xét phần tử dứng trước vị trí i (min_pos) để so sánh với min_pos</i>
+                 
+                             if(a[min_pos] > a[j]) <i>// so sánh từ phần tử i+1 với phần tử nhỏ nhất</i>
+                                 min_pos = j; <i>// Vị trí nhỏ nhất</i>
+                         }
+                         int tmp = a[i];
+                         a[i] = a[min_pos];
+                         a[min_pos] = tmp;
+                     }
+                  }
+                </pre>
+                <h3>Bubble Sort</h3>
+                <p>Độ phức tập:<b> O(N^2)</b></p>
+                <p>Tư tưởng:  ở mỗi bước đưa phần tử lớn nhất chưa được sắp xếp nổi về cuối dãy, bằng cách so sánh 2 phần tử nằm liền kề nhau nếu phần tử đứng trước lớn hơn phần tử phía sau thì hoán đổi vị trí cho nhau</p>
+                <p>Phương pháp: duyệt từ đầu đến phần tử cuối chưa được sắp xếp và so sánh 2 phần tử nằm liền kề nhau, nếu phần tử đứng trước lớn hơn thì hoán đổi vị trí cho nhau, và lặp lại cho đến khi sắp xếp xong</p>
+                <pre> <br>
+                                 <i>Bubble loại 1</i>
+                void BubbleSort1(int a[], int n){
+                    for(int i=0;i < n-1;i++){
+                      for(int j=i+1;j < n;j++){
+                        if(a[i] > a[j]){
+                          int temp = a[i]; a[i] = a[j]; a[j] = temp;
+                        }
+                      }
+                    }
+                  }
+
+
+                                 <i>Bubble Sort loại 2, ko bằng loại 1</i>
+                       void BubbleSort2(int a[], int n)
+                       {
+                           for(int i=0;i < n-1;i++) <i>// n-1: bước</i>
+                           {
+                               for(int j=0;j < n-i-1;j++) <i>// duyệt từ đầu đến phần tử ở phía trước phần tử đã được sắp xếp</i>
+                               {      <i>// n-i-1 : trong đó 'n-1' là xét từ đầu tới phần tử dứng trước vị trị n, và '-i' là xét các phần tử chưa được sắp xếp</i>
+                                   if(a[j] > a[j+1]) <i>// so sánh 2 phần tử nằm liền kề nhau</i>
+                                   {
+                                       int tmp = a[j];
+                                       a[j] = a[j+1];
+                                       a[j+1] = tmp;
+                                   }
+                               }
+                           }
+                       }
+                </pre>
+                <h3>Insertsion Sort</h3>
+                <p>Độ phức tập:<b> O(N^2)</b></p>
+                <p>Tư tưởng: Ở mỗi bước sẽ chèn phần tử đang xét vào dãy các phần tử đã được sắp xếp trước đó</p>
+                <pre> <br>
+                  void InsertionSort(int a[], int n)
+                  {
+                      for(int i=1;i < n;i++)
+                      {  <i>// chèn phần tử a[i] vào đoạn [0;i-1] đã được sắp xếp sao cho vẫn tạo thành dãy tăng dần</i>
+                          int pos = i-1, value = a[i]; <i>// value: giá trị cần chèn vào đoạn [0;i-1]</i>
+                          while(pos >= 0 && value < a[pos]) 
+                          <i>// Nếu vị trí chèn >= 0 và value của phần tử cần xét nhỏ hơn vị trí chèn thì hoán đổi và cho vị trí chèn dịch chuyển về phía trước 1 đơn vị</i>
+                          { <i>Nếu phần tử đứng sau value lớn hơn thì hoán đổi với vị trị của value và tiếp tục tìm vị trí chèn để hõa mảng điều kiện</i>
+                              a[pos+1] = a[pos]; 
+                              --pos; <i>// Dịch chuyển 1 đơn vị về phía trước</i>
+                          }
+                          a[pos+1] = value; <i>// Chèn giá vào phần tử dứng trước vị trí</i>
+                      }
+                  }
+                  
+
+                </pre>
+                <h3>Counting Sort</h3>
+                <p>Độ phức tập:<b> O(N+K), K là phần tử lớn nhất trong mảng</b></p>
+                <p>Tư tưởng: Đếm xem mỗi giá trị xuất hiện bao nhiêu lần, sau đó thì in từ bé đến lớn</p>
+                <p>Điều kiện: khai báo 1 mảng đếm có kích cở là K+1 : phần tử lớn nhất trong mảng và các giá trị ko âm</p>
+                <p>Giá trị của phần tử là chỉ số trong mảng tần số</p>
+                <pre><br>
+                  int cnt[1000001] = {0};
+                  void  CountingSort(int a[], int n)
+                  {
+                      int k = -1e9;
+                      <i>//int cnt[100001] = {0} giới hạn khi khai báo trong biến cục bộ</i>
+                      for(int i=0;i < n;i++)
+                      {
+                         cnt[a[i]]++; <i>// Đếm số lần xuất hiện của phần tử</i>
+                         k = fmax(a[i],k); <i>// Tìm giá trị lớn nhất</i>
+                      }
+                      for(int i=0;i<=k;i++) <i>// Duyệt từ đầu cho đến phần tử lơn nhất + thêm 1</i>
+                      <i>// hoặc for(int i=0;i < k+1;i++)</i>
+                      {
+                          for(int j=0;j < cnt[i];j++) <i>// Số lần xuất hiện của phần tử</i>
+                          {
+                              printf("%d ",i);
+                          }
+                      }
+                  }
+                </pre>
+                <h3>Merge Sort</h3>
+                <p><b>Để tìm hiều về thuật toán Merge Sort thì phải biết thao tác chộn (Merge O(n+m)) 2 dãy đã tăng dần thành 1 dãy tăng dần</b></p>
+                <p>Tư tưởng: xét phần tử nhỏ nhất ở cả hai mảng xem phần tử nào nhỏ hơn thì in phần tử đó ra trước và tăng chỉ số index 1 đơn vị</p>
+                <pre> <br>
+                  #include < stdio.h >  <i>// O(n+m)</i>
+                    int main()
+                    {
+                        int n,m; scanf("%d%d",&n,&m);
+                        int a[n], b[m];
+                        for(int i=0;i < n;i++) scanf("%d",&a[i]);
+                        for(int i=0;i < m;i++) scanf("%d",&b[i]);
+                        int i=0, j=0;
+                        int c[n+m];
+                        int index=0;
+                        while(i < n && j < m)
+                        {
+                           if(a[i] <= b[j]) c[index++] = a[i++];
+                           else c[index++] = b[j++];
+                             
+                        }
+                        while(i < n) c[index++] = a[i++];
+                        while(j < m) c[index++] = b[j++];
+                        for(int i=0;i < n+m;i++) printf("%d ",c[i]);
+                    }
+                </pre>
+                <p>Độ phức tập: <b>O(NLogN)</b></p>
+                <p>Tư tưởng: Trộn các phần tử từ chỏ số left => mid và các phần tử từ chỉ số mid + 1 => right thành các phần tử tăng dần</p>
+                <pre><br>
+                  #include < stdio.h >
+                    void merge(int a[], int l, int m, int r)
+                    {
+                        <i>// tạm thời lưu các phần tử từ chỉ số l => m vào 1 mảng</i>
+                        <i>// Lưu các phần tử từ chỉ số m+1 => r vào 1 mảng</i>
+                        int n1 = m-l+1, n2 = r-m;
+                        int x[n1], y[n2];
+                        <i>// dưa các phần tử từ chỉ số l => m vào mảng x</i>
+                        for(int i=0;i < n1;i++) x[i] = a[l+i];
+                        <i>// dưa các phần tử từ chỉ số m+1 => r vào mảng y</i>
+                        for(int i=0;i < n2;i++) y[i] = a[m+i+1];
+                        <i>// trộn 2 mảng x,y => gán lại cho mảng a[l,r]</i>
+                        int index = l;
+                        int i=0, j=0;
+                        while(i < n1 && j < n2)
+                        {
+                            if(x[i] <= y[j]) a[index++] = x[i++];
+                                else a[index++] = y[j++];
+                        }
+                        while(i < n1 ) a[index++] = x[i++];
+                        while(j < n2 ) a[index++] = y[j++];
+                    }
+                    void MergeSort(int a[], int l, int r)
+                    {
+                        if(l < r)
+                        {
+                            int m = (l+r) / 2;
+                            MergeSort(a,l,m); <i>// gọi đệ quy nữa bên trái</i>
+                            MergeSort(a,m+1,r);<i>// gọi đệ quy nữa bên phải</i>
+                            merge(a,l,m,r);
+                        }
+                    }
+                    int main()
+                    {
+                         int n; scanf("%d",&n);
+                         int a[n];
+                         for(int i=0;i < n;i++) scanf("%d",&a[i]);
+                         MergeSort(a,0,n-1);
+                         for(int i=0;i < n;i++) printf("%d ",a[i]);
+                    }
+                </pre>
+                <h3>Quick Sort</h3>
+                <p>Độ phức tập: <b>O(NLogN)</b></p>
+                <p>Tư tưởng: </p>
+                <pre><br>
+                  #include < stdio.h >
+                    <i>// Hàm phân hoạch Lomuto : trả về chỉ số của khóa (pivot)</i>
+                    int partition(int a[], int l, int r)
+                    {
+                        int i = l-1, pivot = a[r];
+                        for(int j=l;j < r ;j++)
+                        {  <i>// nếu a[j] > pivot : bỏ qua</i>
+                            if(a[j] <= pivot)
+                            {
+                                i++; <i>// dưa a[j] lên đầu</i>
+                                int tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+                            }
+                        }
+                        i++;
+                        int tmp = a[i]; a[i] = a[r]; a[r] = tmp;
+                        return i;
+                    }
+                    void QuickSort(int a[], int l, int r)
+                    {
+                        if(l < r)
+                        {
+                            int pos = partition(a,l,r);
+                            QuickSort(a,l,pos-1); <i>// Xét đệ quy phía bên trái</i>
+                            QuickSort(a,pos+1,r); <i>// Xét đệ quy phía bên phải</i>
+                        }
+                    }
+                    int main()
+                    {
+                        int n; scanf("%d",&n);
+                        int a[n];
+                        for(int i=0;i < n;i++) scanf("%d",&a[i]);
+                        QuickSort(a,0,n-1);
+                        for(int i=0;i < n;i++) printf("%d ",a[i]);
+                    }
+                </pre>
+                <h3>Shell Sort</h3>
+                <p>Độ phức tập: <b>O(NLogN)</b></p>
+                <p>Tư tưởng: Nó có thể được coi là sự tổng quát hóa của sắp xếp theo trao đổi ( sắp xếp bong bóng ) hoặc sắp xếp theo cách chèn ( sắp xếp chèn ). [3] Phương pháp bắt đầu bằng cách sắp xếp các cặp phần tử cách xa nhau, sau đó giảm dần khoảng cách giữa các phần tử được so sánh. Bằng cách bắt đầu với các phần tử cách xa nhau, nó có thể di chuyển một số phần tử không đúng vị trí vào vị trí nhanh hơn so với trao đổi hàng xóm gần nhất đơn giản</p>
+                <p><i style="color: rgb(64, 148, 231);">Tư tưởng của thuật toán Shell Sort là sử dụng phương pháp "sắp xếp giới hạn" (incremental insertion sort). Thay vì sắp xếp toàn bộ dãy ban đầu một lần, Shell Sort chia dãy thành các mảnh con nhỏ hơn và sắp xếp riêng lẻ các mảnh này.
+
+                  Ý tưởng chính của Shell Sort là sắp xếp các phần tử cách nhau một khoảng cách gọi là "gap". Ban đầu, gap có giá trị lớn và dần dần giảm đi theo một quy tắc nhất định (thông thường là gap/2). Thuật toán sẽ thực hiện sắp xếp các phần tử trong cùng một mảnh con với gap cho đến khi gap giảm xuống thành 1.
+                  
+                  Quá trình sắp xếp các phần tử trong mảnh con với gap được thực hiện bằng cách sử dụng thuật toán Insertion Sort hoặc Bubble Sort. Với mỗi mảnh con, các phần tử sẽ được so sánh và đổi chỗ để đưa phần tử nhỏ hơn về phía trước.
+                  
+                  Bằng cách sắp xếp các mảnh con lẻ tách rời, thuật toán tạo ra sự sắp xếp một phần ban đầu trong dãy. Sau đó, các phần tử trong dãy sẽ được sắp xếp gần nhau hơn khi gap giảm xuống 1. Cuối cùng, thuật toán thực hiện một lần sắp xếp cuối cùng trên toàn bộ dãy để hoàn thành quá trình sắp xếp.
+                  
+                  Tư tưởng của Shell Sort là kết hợp giữa ý tưởng của Insertion Sort và sắp xếp "đoạn nhỏ" để giảm số lượng phép so sánh và đổi chỗ. Việc sắp xếp dần dần các mảnh con có thể giúp đưa các phần tử gần nhau về vị trí đúng, từ đó cải thiện hiệu suất sắp xếp.</i></p>
+                <b>Shell Sort 1</b>
+                <pre><br>
+                  void ShellSort(int a[], int n)
+                  {
+                      int gap,i,j,tmp;
+                      for(gap=n/2;gap>0;gap/=2)
+                      {
+                          for(i=gap;i < n;i++)
+                          {
+                              tmp = a[i];
+                              for(j=i; j>=gap && a[j-gap] > tmp;j-=gap)
+                              {
+                                  a[j] = a[j-gap];
+                              }
+                              a[j] = tmp;
+                          }
+                      }
+                  }
+                </pre>
+                <b>Shell Sort 2</b>
+                <pre> <br>
+                  void ShellSort(int arr[], int n) {
+                    // Định nghĩa khoảng cách giữa các phần tử được so sánh
+                    int gap = n / 2;
+                    while (gap > 0) {
+                        for (int i = gap; i < n; i++) {
+                            int temp = arr[i];
+                            int j = i;
+                            // Sắp xếp các phần tử trong khoảng
+                            while (j >= gap && arr[j - gap] > temp) {
+                                arr[j] = arr[j - gap];
+                                j -= gap;
+                            }
+                            arr[j] = temp;
+                        }
+                        gap /= 2; // Giảm khoảng cách
+                    }
+                }
+                </pre>
+
+                
+                <h3>Radix sort</h3>
+                <p>Độ phức tập:<b></b></p>
+                <p>Tư tưởng: </p>
+                <pre><br>
+                  
+                </pre>
+
+                <h3>Bin sort</h3>
+                <p>Độ phức tập:<b></b></p>
+                <p>Tư tưởng: </p>
+                <pre><br>
+                  
+                </pre>
+    </div>
+   
+  </body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu</title>
+    <style>
+       .syntax {
+        color: red;
+       }
+      pre {
+        background-color: rgb(11, 9, 9);
+        color: rgb(142, 89, 215);
+        width: 100%;
+        height: 50%;
+      }
+      i {
+          color: aliceblue;
+      }
+      h3 {
+        
+        text-shadow: 2px 2px 5px rgb(255, 69, 106);
+        text-align: center;
+        font-size: 30px;
+      }
+      h1 {
+        text-align: center;
+        text-shadow: 2px 2px 5px violet;
+        font-size: 50px;
+      }
+      h2 {
+        text-align: center;
+        text-shadow: 2px 2px 5px rgb(29, 226, 11);
+        font-size: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Các thao tác cơ bản mảng Struct</h1>
+    <pre><br>
+       #include < stdio.h >
+       #include < math.h >
+       #include < string.h >
+       #include < ctype.h >
+       #include < stdlib.h >
+       <i>// Khai báo struct</i>
+       struct sinhvien{
+            char ten[70];
+           char lop[70];
+           double gpa;
+       };
+       typedef struct sinhvien sinhvien; <i>//Ðịnh nghĩa tên mớii của struct sinhvien</i>
+       void nhap(sinhvien *x){
+           getchar();
+           printf("Nhap ten: "); gets(x->ten);
+           printf("Nhap lop: "); gets(x->lop);
+           printf("Nhap gpa: "); scanf("%lf",&x->gpa);
+       }
+       void in(sinhvien x){
+           printf("%s %s %.2lf\n",x.ten, x.lop, x.gpa);
+       }
+       <i>//Sắp xếp, tìm kiếm, tìm min, max, trung bình..</i>
+
+       void timkiem(sinhvien a[], int n, char name[]){
+           int find =0;
+           for(int i=0;i < n;i++){
+               if(strcmp(name, a[i].ten) == 0){
+                   in(a[i]);
+                   find = 1; //Tìm th?y
+               }
+           }
+           if(!find) printf("Khong tim thay?\n");
+       } 
+       <i>//In ra những sinh viên có gpa cao nhất</i>
+       void maxgpa(sinhvien a[], int n){
+           double max = 0;
+           for(int i=0;i < n;i++){
+               max = fmax(max,a[i].gpa);
+           }
+           printf("Sinh vien co diem GPA cao nhat: \n");
+           for(int i=0;i < n;i++){
+               if(max == a[i].gpa) in(a[i]);
+           }
+       }
+       <i> //Xóa tên sinh viên</i>
+       void xoatongtin(sinhvien a[], int *n, char name[]){
+           for(int i=0;i < *n;i++){
+               if(strcmp(a[i].ten,name) == 0){
+                   for(int j=i;j < *n-1;j++) a[j] = a[j+1];
+                   //break; //Xóa 1 thông tin tên
+                   (*n)--;// Xóa h?t
+               }
+           }
+       }
+       <i>//Sắp xếp sinh viên theo gpa giảm dần</i>
+       void sapxep(sinhvien a[], int n){
+           for(int i=0;i < n;i++){
+               int max = i;
+               for(int j=i+1;j < n;j++){
+                   if(a[max].gpa < a[j].gpa)
+                       max = j;
+               }
+               sinhvien tmp = a[max];
+               a[max] = a[i];
+               a[i] = tmp;
+           }
+       }
+       <i>//Comparator</i>
+       int cmp(const void *a, const void *b){
+           sinhvien *x = (sinhvien*)a;
+           sinhvien *y = (sinhvien*)b;
+           if(y->gpa > x->gpa) return 1;
+           else return -1;
+       }
+
+       int main()
+       { 
+           sinhvien a[1000];
+           int n;
+           while(1){
+               printf("--------------------------QLSV--------------------------\n");
+               printf("1.Nhap danh sach sinh vien\n");
+               printf("2.Hien thi danh sach sinh vien\n");
+               printf("3.Tim kiem sinh vien theo ten\n");
+               printf("4.Liet ke sinh vien co diem GPA cao nhat\n");
+               printf("5.Xoa sinh vien theo ten\n");
+               printf("6.Sap xep sinh vien theo GPA giam dan\n");
+               printf("0.Thoat !\n");
+               printf("--------------------------------------------------------\n\n\n");
+               printf("Nhap lua chon: ");
+               int lc; scanf("%d",&lc);
+               if(lc == 1){
+                   printf("Nhap so luong sinh vien: "); scanf("%d",&n);
+                   for(int i=0;i < n;i++) nhap(&a[i]);
+               }
+               else if(lc == 2){
+                   printf("Danh sach sinh vien: \n");
+                   for(int i=0;i < n;i++) in(a[i]);
+               }
+               else if(lc == 3){
+                   char name[100];
+                   getchar();
+                   printf("Nhap sinh vien can tim kiem: ");
+                   gets(name);
+                   timkiem(a,n,name);
+               }
+               else if(lc == 4){
+                   maxgpa(a,n);
+               }
+               else if(lc == 5){
+                   char name[100];
+                   getchar();
+                   printf("Nhap ten sinh vien can xoa: ");
+                   gets(name);
+                   xoatongtin(a,&n,name);
+               }
+               else if(lc == 6){
+                //sapxep(a,n);
+                qsort(a,n,sizeof(sinhvien),cmp);
+               }
+               else if(lc == 0) break;
+           }
+       }
+
+    </pre>
+ 
+  </body>
+</html>

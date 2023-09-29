@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Các hàm ghi file</title>
+    <style>
+      .syntax {
+        color: red;
+      }
+      pre {
+        background-color: rgb(11, 9, 9);
+        color: rgb(142, 89, 215);
+        width: 100%;
+        height: 50%;
+      }
+      i {
+        color: aliceblue;
+      }
+      h3 {
+        text-shadow: 2px 2px 5px rgb(255, 69, 106);
+        text-align: center;
+        font-size: 30px;
+      }
+      h1 {
+        text-align: center;
+        text-shadow: 2px 2px 5px violet;
+        font-size: 50px;
+      }
+      h2 {
+        text-align: center;
+        text-shadow: 2px 2px 5px rgb(29, 226, 11);
+        font-size: 50px;
+      }
+      h5 {
+        text-align: center;
+        text-shadow: 2px 2px 5px rgb(240, 244, 25);
+         font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+     <h1>Các hàm ghi file</h1>
+     <h5>Ghi 1 ký tự vào file</h5>
+     <pre><br>
+        <i>Syntax</i>
+        fputc(char, <i class="syntax">file_pointer</i>);
+     </pre>
+     <pre><br>
+        <i>VD:</i>
+       #include <stdio.h>
+       #include <string.h>
+       int main(){
+          FILE *f;
+          f = fopen("input.txt", "w"); <i>//write</i>
+          char c[] = "Nakroth";
+          for(int i=0;i < strlen(c);i++){
+          fputc(c[i], f); <i>//Ghi 1 ký tự vào file</i>
+          }
+          fclose(f);
+       }
+     </pre>
+     <h3>Ghi 1 xâu vào file</h3>
+     <pre><br>
+        <i>Syntax</i>
+        fputs(str, <i class="syntax">file_pointer</i>);
+     </pre>
+     <pre><br>
+        <i>VD:</i>
+       #include < stdio.h>
+       #include < string.h>
+       int main(){
+          FILE *f;
+          f = fopen("input.txt", "w"); <i>//write</i>
+          char c[] = "Nakroth\n";
+          fputs(c,f); <i>//Ghi 1 xâu tự vào file</i>
+          fclose(f);
+       }
+     </pre>
+     <h3>Ghi vào file thông qua con trỏ</h3>
+     <p>Hàm được sữ dụng nhiều</p>
+     <pre><br>
+        <i>Syntax</i>
+        fprintf(<i class="syntax">file_pointer</i>, format, variables);
+     </pre>
+     <pre><br>
+        <i>VD:</i>
+       #include < stdio.h>
+       #include < string.h>
+       int main(){
+          FILE *f;
+          f = fopen("input.txt", "w"); <i>//write</i>
+          for(int i=0;i <= 70;i++){
+                fprintf(f, "%d ", i);
+          }
+          fclose(f);
+       }
+     </pre>
+  </body>
+</html>

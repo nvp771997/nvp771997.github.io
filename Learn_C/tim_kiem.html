@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="vn">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="charset" href="ly_thuyet_so.html">
+    <title>NVP</title>
+    <style>
+      /* body {
+        background-image: url(photto/mo.jpg);
+       
+        background-size: 100%;
+      } */
+      pre {
+        background-color: rgb(11, 9, 9);
+        color: rgb(142, 89, 215);
+        width: 70%;
+        height: 50%;
+      }
+      i {
+          color: aliceblue;
+      }
+      h3 {
+        
+        text-shadow: 2px 2px 5px rgb(255, 69, 106);
+        text-align: center;
+        font-size: 30px;
+      }
+      h1 {
+        text-align: center;
+        text-shadow: 2px 2px 5px violet;
+        font-size: 50px;
+      }
+    </style>
+  </head>
+  <body>
+     <h1>Tìm kiếm</h1>
+       
+      <h3>Linear Search (Tìm kiếm tuyến tính)</h3>
+      <p>Độ phức tập:<b> O(N)</b></p>
+      <p>Tư tưởng: duyệt từ đầu đến cuối. </p>
+      <pre> <br>
+        int LinearSearch(int a[], int n, int x)
+        {
+            for(int i=0;i < n;i++)
+            {
+                if(a[i] == x) return 1;
+            }
+            return 0;
+        }             
+      </pre>
+
+                <h3>Binary Search (Tìm kiếm nhị phân)</h3>
+                <p>Độ phức tập:<b> O(LogN)</b></p>
+                <p>Điều kiện để tìm kiếm là mảng đã được sắp xếp rồi</p>
+                <p>Tư tưởng: Tìm kiếm trong đoạn từ [left, right] của mảng, ở mỗi bước thuật toán tìm vị trị mid ở giữa đoạn left, right. Nếu phần tử cần tìm kiếm bằng phần tử ở vị trí mid thì kết luận là tìm thấy, nếu không ta có thể giảm 1 nửa đoạn tìm kiếm xuống và tiếp tục tìm kiếm ở bên trái hay bên phải của mid</p>
+                <pre> <br>
+                  #include < stdio.h >
+                    int LinearSearch(int a[], int n, int x)
+                    {
+                        int l = 0, r = n -1;
+                        while(l <= r)
+                        {
+                            int m = (l + r) / 2;
+                            if(a[m] == x) return 1;
+                            else {
+                                if(a[m] < x) l = m + 1;
+                                else r = m - 1;
+                            }
+                        }
+                        return 0;
+                    }
+                    int main()
+                    {
+                        int n,x; scanf("%d%d",&n,&x);
+                        int a[n];
+                        for(int i=0;i < n;i++) scanf("%d",&a[i]);
+                        printf("%d\n", LinearSearch(a,n,x));
+                    }
+                </pre>
+
+                <h3>Các biến thể của tìm kiếm nhị phân</h3>
+                <h2>1) Vị trí đầu tiên trong mảng tăng dần</h2>
+                <p>Độ phức tạp: <b>O(LogN)</b></p>
+                <pre> <br>
+                  #include < stdio.h >
+                    <i>// Tìm chỉ số đầu tiên của phần tử x trong mảng a đã được sắp xếp, nếu ko tìm thấy trả về -1</i>
+                    int First_linear_search(int a[], int n, int x)
+                    {
+                         int res = -1, l = 0, r = n - 1;
+                         while(l <= r)
+                         {
+                            int m = (l + r) / 2;
+                            if(a[m] == x)
+                            {
+                                res = m;
+                                <i>// tìm thêm ở bên trai xem có còn x ko?</i>
+                                r = m - 1;
+                            }
+                            else if(a[m] < x) l = m + 1;
+                            else r = m - 1;
+                         }
+                         return res;
+                    }
+                    int main()
+                    {
+                        int n,x; scanf("%d%d",&n,&x);
+                        int a[n];
+                        for(int i=0;i < n;i++) scanf("%d",&a[i]);
+                        printf("%d\n", First_linear_search(a,n,x));
+                    }
+                </pre>
+                 
+                <h2>2) Vị trí cuối cùng trong mảng tăng dần</h2>
+                <p>Độ phức tạp: <b>O(LogN)</b></p>
+                <pre> <br>
+                  #include < stdio.h >
+                    <i>// Tìm chỉ số cuối của phần tử x trong mảng a đã được sắp xếp, nếu ko tìm thấy trả về -1</i>
+                    int Last_linear_search(int a[], int n, int x)
+                    {
+                         int res = -1, l = 0, r = n - 1;
+                         while(l <= r)
+                         {
+                            int m = (l + r) / 2;
+                            if(a[m] == x)
+                            {
+                                res = m;
+                                <i>// tìm thêm ở bên phải xem có còn x ko?</i>
+                                l = m + 1;
+                            }
+                            else if(a[m] < x) l = m + 1;
+                            else r = m - 1;
+                         }
+                         return res;
+                    }
+                    int main()
+                    {
+                        int n,x; scanf("%d%d",&n,&x);
+                        int a[n];
+                        for(int i=0;i < n;i++) scanf("%d",&a[i]);
+                        printf("%d\n", Last_linear_search(a,n,x));
+                    }
+                </pre>
+                <h2>3) Vị trí đầu tiên lớn hơn hoặc bằng X trong mảng tăng dần</h2>
+                <p>Độ phức tạp: <b>O(LogN)</b></p>
+                <pre> <br>
+                  #include < stdio.h >
+                    <i>// Tìm chỉ đầu tiên lớn hơn hoặc bằng phần tử x trong mảng a đã được sắp xếp, nếu ko tìm thấy trả về -1</i>
+                    int First_linear_search(int a[], int n, int x)
+                    {
+                         int res = -1, l = 0, r = n - 1;
+                         while(l <= r)
+                         {
+                            int m = (l + r) / 2;
+                            if(a[m] >= x)
+                            {
+                                res = m;
+                                <i>// tìm thêm ở bên trái</i>
+                                r = m - 1;
+                            }
+                            else   l = m + 1;   
+                         }
+                         return res;
+                    }
+                    int main()
+                    {
+                        int n,x; scanf("%d%d",&n,&x);
+                        int a[n];
+                        for(int i=0;i < n;i++) scanf("%d",&a[i]);
+                        printf("%d\n", First_linear_search(a,n,x));
+                    }
+                </pre>
+                <h2>4) Vị trí cuối cùng nhỏ hơn hoặc bằng X trong mảng tăng dần</h2>
+                <p>Độ phức tạp: <b>O(LogN)</b></p>
+                <pre> <br>
+                  #include < stdio.h >
+                   <i> // Tìm chỉ số cuối cùng nhỏ hơn hoặc bằng phần tử x trong mảng a đã được sắp xếp, nếu ko tìm thấy trả về -1</i>
+                    int Last_linear_search(int a[], int n, int x)
+                    {
+                         int res = -1, l = 0, r = n - 1;
+                         while(l <= r)
+                         {
+                            int m = (l + r) / 2;
+                            if(a[m] <= x)
+                            {
+                                res = m;
+                                <i>// tìm thêm ở bên phải</i>
+                                l = m + 1;
+                            }
+                            else   r = m - 1;   
+                         }
+                         return res;
+                    }
+                    int main()
+                    {
+                        int n,x; scanf("%d%d",&n,&x);
+                        int a[n];
+                        for(int i=0;i < n;i++) scanf("%d",&a[i]);
+                        printf("%d\n", Last_linear_search(a,n,x));
+                    }
+                </pr>
+                 
+    </div>
+   
+  </body>
+</html>

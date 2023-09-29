@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>String</title>
+    <style>
+      /* body {
+        background-image: url(photto/mo.jpg);
+       
+        background-size: 100%;
+      } */
+      pre {
+        background-color: rgb(11, 9, 9);
+        color: rgb(142, 89, 215);
+        width: 100%;
+        height: 50%;
+      }
+      i {
+          color: aliceblue;
+      }
+      h3 {
+        
+        text-shadow: 2px 2px 5px rgb(255, 69, 106);
+        text-align: center;
+        font-size: 30px;
+      }
+      h1 {
+        text-align: center;
+        text-shadow: 2px 2px 5px violet;
+        font-size: 50px;
+      }
+      h2 {
+        text-align: center;
+        text-shadow: 2px 2px 5px rgb(29, 226, 11);
+        font-size: 50px;
+      }
+    </style>
+    
+    </style>
+  </head>
+  <body>
+    <h1>String</h1>
+    <p><a href="Bai_10.1_String.html">Các hàm xử lý xâu thông dụng</a></p>
+    <p><a href="Bai_10.2_String.html">Các bài toán liên quan đến tầng suất trong String</a></p>
+    <p>- Chuỗi ký tự là 1 mảng ký tự và kết thúc bằng ký tự '<mark>\0</mark>' (ký tự NULL)</p>
+    <p>- Để sữ dụng được  String thì phải theo 2 thư viện <mark>string.h</mark> và <mark>ctype.h</mark></p>
+    <h3>Khai báo String</h3>
+    <pre><br>
+       #include < stdio.h >
+       int main()
+       {
+       char c[] = "Nakroth"; <i>//Xâu ký tự thì đặt trong dấu nháy ""</i>
+       char p[] = {'N', 'a', 'k', 'r', 'o', 't', 'h', '\0'};
+       
+       printf("%s",c);
+       printf("\n");
+       for(int i=0;i < 7;i++) printf("%c",p[i]);  
+       printf("\n");
+       printf("%s",p);
+       }
+    </pre>
+    <h3>Nhập String</h3>
+    <h4>Nhập xâu không có dấu cách</h4>
+    <pre><br>
+         #include < stdio.h >
+         int main()
+         {
+         char c[70];
+         scanf("%s",c); <i>//Không nhập được dấu cách</i>
+         printf("%s\n",c);
+
+         }
+    </pre>
+    <h4>Nhập xâu có dấu cách bằng gets</h4>
+    <pre> <br>
+        #include < stdio.h >
+        #include < string.h >
+        #include < ctype.h >
+        int main()
+        {
+            char c[70];
+            gets(c); <i>//Nhập được cả dấu cách</i>
+            printf("%s\n",c);
+        }
+    </pre>
+    <h4>Nhập xâu bằng fgets mới và an toàn hơn</h4>
+    <pre><br>
+      #include < stdio.h >
+      #include < string.h >
+      #include < ctype.h >
+      int main()
+      {
+         char c[70];
+         fgets(c,70,stdin); <i>//Kiểu mới và an toàn hơn gets</i>
+         printf("%s\n",c);
+      }
+      
+    </pre>
+    <h3>Chôi lệnh</h3>
+    <h4>Lỗi chôi lệnh khi dùng scanf trước gets</h4>
+    <pre> <br>
+       #include < stdio.h >
+       #include < string.h >
+       #include < ctype.h >
+       int main()
+       {
+         int n; scanf("%d",&n);
+         char c[70];
+         gets(c);
+         printf("%s %d\n",c,n);
+       }
+    </pre>
+    <h4>Cách khắc phục là xóa bộ nhớ đệm bằng cách fflush(stdin) nhưng mà cách này sẽ xóa toàn bộ bộ nhớ đệm. Nên chúng ta chỉ cần dụng hàm <mark>getchar();</mark> đọc ký tự từ bộ đệm bàn phím là được.</h4>
+    <pre><br>
+       #include < stdio.h >
+       #include < string.h >
+       #include < ctype.h >
+       int main()
+       {
+           int n; scanf("%d",&n);
+           char c[70];
+           <i>//getchar();</i> <i>//Hàm đọc 1 ký tự từ bàn phím, được sữ dụng khi có scanf trước gets</i>
+           while(getchar() != '\n'); <i>//Tránh trường hợp nhập nhiều lần dấu cách</i>
+           gets(c);
+           printf("%s %d\n",c,n);
+       }
+    </pre>
+    <h2>Các hàm thường gặp trong String</h2>
+    <h3>strlen</h3>
+    <p><b>strlen</b>: trả về số lượng có trong chuỗi</p>
+    <pre><br>
+          #include < stdio.h >
+          #include < string.h >
+          #include < ctype.h >
+          int main()
+          {
+              char c[70];
+              gets(c);
+              printf("So luong ky tu: %d\n", strlen(c));
+          }
+    </pre>
+    <p>Trong hàm strlen thì sự khác nhau giữa gets và fgets: fgets sẽ đọc cả kí tự enter và cho vào xâu, ngược lại gets thì không</p>
+    <p>Cách loại bỏ kí tự enter nếu bạn dùng fgets đó là cho kí tự đó thành kí tự null.</p>
+    <pre><br>
+      #include < stdio.h >
+        #include < string.h >
+        #include < ctype.h >
+        int main()
+        {
+            char c[70], d[70];
+            gets(c);
+            fgets(d, 70, stdin);
+            printf("%d %d\n", strlen(c), strlen(d));
+            d[strlen(d)-1] = '\0';
+            printf("%d %d\n",strlen(c), strlen(d));
+        }
+    </pre>
+
+  </body>
+</html>

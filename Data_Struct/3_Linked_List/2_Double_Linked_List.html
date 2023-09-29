@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Double Linked Lish</title>
+    <style>
+      .syntax {
+        color: red;
+      }
+      pre {
+        background-color: rgb(11, 9, 9);
+        color: rgb(142, 89, 215);
+        width: 100%;
+        height: 50%;
+      }
+      i {
+        color: aliceblue;
+      }
+      h3 {
+        text-shadow: 2px 2px 5px rgb(255, 69, 106);
+        text-align: center;
+        font-size: 40px;
+      }
+      h1 {
+        text-align: center;
+        text-shadow: 2px 2px 5px violet;
+        font-size: 50px;
+      }
+      h2 {
+        text-align: center;
+        text-shadow: 2px 2px 5px rgb(29, 226, 11);
+        font-size: 50px;
+      }
+      h4 {
+        text-align: center;
+        text-shadow: 2px 2px 5px rgb(12, 209, 202);
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Danh sách liên kiết đôi</h1>
+    <p>Ưu điểm của DSLK đôi đó là có thể di chuyển DSLK theo cả 2 chiều, tuy nhiên nó cùng cần thêm bộ nhớ để lưu con trỏ tới node liền trước cũng như như các thao tác trên DSLK đôi sẽ nhiều hơn so với DSLK đơn</p>
+    <h2>Cấu trúc của danh sách liên kết đôi</h2>
+    <pre><br>
+      struct node{
+        int data;
+        struct node *next; <i>// Trỏ sau</i>
+        struct node *prev; <i>// Trỏ trước</i>
+    };
+    </pre>
+
+    <h2>Duyệt DSLK đôi</h2>
+    <pre><br>
+      void duyet(node *head){
+        while(head != NULL){
+            printf("%d ",head->data);
+            head = head->next;
+        }
+    
+    }
+    </pre>
+    <h2>Cấp phát 1 node mới</h2>
+    <pre><br>
+      node *makeNode(int x){
+        <i>// Cấp phát động</i>
+        node *newNode = (node*)malloc(sizeof(node));
+        newNode->data = x;
+        newNode->next = NULL;
+        newNode->prev = NULL;
+        return newNode;
+   }
+    </pre>
+    <h2>Các thao tác trên DSLK đôi</h2>
+    <h3>Thêm node vào DSLK đôi</h3>
+    <h4>Chèn một node vào đầu danh sách</h4>
+    <pre><br>
+      void pushF(node **head, int x){
+        node *newNode = makeNode(x);
+        newNode->next = *head; <i>//Cho next của node trỏ vào node đầu hiện tại</i>
+        if(*head != NULL) <i>//ít nhất có 1 node ok rỗng</i>
+        (*head)->prev = newNode; 
+        *head = newNode; <i>// Cho node head ra node mới để quản lý</i>
+    }
+    </pre>
+    <h4>Chèn một node vào cuối danh sách</h4>
+    <pre><br>
+      void pushB(node **head, int x){;
+        node *newNode = makeNode(x);
+        if(*head == NULL){ <i>// Kiểm tra danh sách rỗng</i>
+            *head = newNode;
+            return;
+        }
+        <i>// Danh sách có ít nhất 1 node</i>
+        node *temp = *head;
+        while(temp->next != NULL){ <i>// di chuyển đến node cuối cùng trong ds</i>
+            temp = temp->next;
+        }
+        temp->next = newNode; <i>// Temp trỏ vào node mới</i>
+        newNode->prev = temp; <i>// Và prev trỏ ngược lại temp</i>
+        }
+    </pre>
+    <h4>Chèn một node vào vị trí k trong danh sách</h4>
+    <pre><br>
+      void insert(node **head, int k, int x){
+        <i>// Đếm số lượng node</i>
+           int n = sizeof(*head);
+           if(k < 1 || k > n) return;
+           if(k==1){ <i>// chèn node đầu tiên</i>
+               pushF(head,x);
+               return;
+           }
+           //printf("%d %d",k,n+1);
+           if(k==n){ <i>// chèn node cuối</i>
+               pushB(head,x);
+               return;
+           }
+           node *newNode = makeNode(x);
+           node *temp = *head;
+           for(int i=1;i < k-1;i++){ <i>// di chuyển đến trước node cần thêm</i>
+               temp = temp->next;
+           }
+           newNode->next = temp->next; <i>// gán địa chỉ của node thứ k vào node mới</i>
+           temp->next->prev = newNode; 
+           temp->next = newNode; <i>// Node thứ k trỏ vào node mới</i>
+           newNode->prev = temp;
+       }
+    </pre>
+    <h3>Xóa một node trong DSLKD</h3>
+    <h4>Xóa node ở đầu danh sách</h4>
+    <pre><br>
+      void popF(node **head){
+        if(*head == NULL) return; <i>//Nếu ds rỗng thì kết thúc</i>
+        node *temp = *head;
+        (*head) = (*head)->next;
+        if(*head != NULL) <i>// Nếu ds chỉ có 1 node thì</i>
+             (*head)->prev = NULL;
+        free(temp);
+    }
+    </pre>
+    <h4>Xóa node ở cuối danh sách</h4>
+    <pre><br>
+      void popB(node **head){
+        if(*head == NULL) return; <i>//Nếu ds rỗng thì kết thúc</i>
+        node *temp = *head;
+        if(temp->next == NULL){ <i>//Nếu dslk chỉ có 1 node </i>
+            *head = NULL;
+            free(temp);
+            return;
+        }
+        <i>// 2 node trở lên</i>
+        while(temp->next->next != NULL){ <i>// duyệt tới node thứ 2 từ cuối đếm về</i>
+            temp = temp->next;
+        }
+        node *last = temp->next;
+        temp->next = NULL;
+        free(last);
+    }
+    <i>-------------------------------------------------------------------------------------</i>
+                                           <i>Cách 2: có lợi hơn dslk đơn vì khỏi duyệt pt thứ 2 từ cuối về</i>
+
+
+         void popB(node **head){
+          if(*head == NULL) return; <i>//Nếu ds rỗng thì kết thúc</i>
+          node *temp = *head;
+          if(temp->next == NULL){ <i>//Nếu dslk chỉ có 1 node </i>
+              *head = NULL;
+              free(temp);
+              return;
+          }
+          <i>// 2 node trở lên</i>
+          while(temp->next != NULL){ <i>// duyệt tới node cuối</i>
+              temp = temp->next;
+          }
+           temp->prev->next = NULL:
+          free(temp);
+      }
+    </pre>
+    <h4>Xóa node ở vị trí k trong danh sách</h4>
+    <pre><br>
+            <i>Cách 1 tự chế</i>
+            void erase(node **head, int k){
+              int n = sizeof(*head);
+              if(k < 1 || k > n) return;
+              if(k==1){
+                  popF(head);
+                  return;
+              }
+              node *temp = *head;
+              for(int i=1;i < k-1;i++){
+                  temp = temp->next;
+              }
+              node *last = temp->next;
+              if(k!=n-1){ <i>//Nếu là node cuối thì khỏi trỏ prev, nếu ko sẽ lỗi</i>
+                  temp->next->next->prev = temp;
+              }
+              temp->next = last->next;
+              free(last);
+          }
+             <i>Cách 2 tự chế</i>
+             void erase(node **head, int k){
+              int n = sizeof(*head);
+              if(k < 1 || k > n) return;
+              if(k==1){
+                  popF(head);
+                  return;
+              }
+              if(k==n-1){
+                  popB(head);
+                  return;
+              }
+              node *temp = *head;
+              for(int i=1;i < k-1;i++){
+                  temp = temp->next;
+              }
+              node *last = temp->next;
+              temp->next->next->prev = temp;
+              temp->next = last->next;
+              free(last);
+          }
+
+             <i>Cách 3 hoàn chĩnh ko tự chế</i>
+             void erase(node **head, int k){
+              int n = sizeof(*head);
+              if(k < 1 || k > n) return;
+              if(k==1){
+                  popF(head);
+                  return;
+              }
+              else {
+                 node *temp = *head;
+                 for(int i=1;i<=k-1;i++){
+                    temp = temp->next;
+                  }
+                  temp->prev->next = temp->next; <i>//k-1 => k+1 : next</i>
+                  if(temp->next != NULL)
+                      temp->next->prev = temp->prev; <i>//k+1 => k-1 : prev</i>
+                  free(temp);
+              } 
+          }
+    </pre>
+ 
+         
+  </body>
+</html>

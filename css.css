@@ -1,0 +1,43 @@
+      body {
+        background-color: black;
+        color: white;
+        font-family: Arial, sans-serif;
+      }
+
+      h1 {
+        text-align: center;
+        color: #8a2be2; /* Màu tím */
+      }
+
+      form {
+        width: 300px;
+        margin: 0 auto;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        padding: 8px;
+        border: none;
+        background-color: #333; /* Màu đen */
+        color: white;
+        margin-bottom: 10px;
+      }
+
+      button[type="button"] {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        background-color: #8a2be2; /* Màu tím */
+        color: white;
+        cursor: pointer;
+      }
+
+      button[type="button"]:hover {
+        background-color: #9932cc; /* Màu tím đậm */
+      }

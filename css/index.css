@@ -1,0 +1,43 @@
+ 
+ body {
+   background-color: rgb(72, 70, 70);
+   color: aliceblue;
+   width: 100%;
+   
+    
+ }
+   .cl1 {
+    width: 100%;
+   }
+
+     ul {
+      list-style-type:none;
+      overflow: hidden;
+      background-color: rgb(53, 51, 51);
+     }
+     li {
+      display: flex;
+      float:    left;
+    }
+    li a {
+      border: 1px solid;
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+    
+    li a:hover {
+      background-color: #111;
+      color: rgb(150, 23, 213);
+    }
+    h1 {
+      text-align: center;
+      font-size: 50px;
+    }
+    h2 {
+      font-size: 25px;;
+    }
+
+    

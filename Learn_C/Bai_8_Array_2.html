@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array 2</title>
+    <style>
+      /* body {
+        background-image: url(photto/mo.jpg);
+       
+        background-size: 100%;
+      } */
+      pre {
+        background-color: rgb(11, 9, 9);
+        color: rgb(142, 89, 215);
+        width: 90%;
+        height: 50%;
+      }
+      i {
+        color: aliceblue;
+      }
+      h3 {
+        text-shadow: 2px 2px 5px rgb(255, 69, 106);
+        text-align: center;
+        font-size: 30px;
+      }
+      h1 {
+        text-align: center;
+        text-shadow: 2px 2px 5px violet;
+        font-size: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Mảng 2 chiều</h1>
+    <h2>Các phép toán trên mảng 2 chiều</h2>
+    <h3>Cộng trừ 2 ma trận</h3> 
+    <p>Điều kiện để cộng hoặc trừ 2 ma trận là số hàng và số cột của 2 ma trận phải giống nhau</p>
+    <pre><br>
+      #include < stdio.h >
+        void nhap(int a[][100], int n, int m)
+        {
+            for(int i=0;i < n;i++)
+            {
+                for(int j=0;j < m;j++) scanf("%d",&a[i][j]);
+            }
+        }
+        void in(int c[][100], int n, int m)
+        {
+            for(int i=0;i < n;i++)
+            {
+                for(int j=0;j < m;j++) printf("%d ",c[i][j]);
+                    printf("\n");
+            }
+        }
+        int main()
+        {
+            int a[100][100], b[100][100], c[100][100];
+            int n,m; scanf("%d%d",&n,&m);
+            nhap(a,n,m);
+            nhap(b,n,m);
+            <i>//Cộng 2 ma trận</i>
+            for(int i=0;i < n;i++)
+            {
+                for(int j=0;j < m;j++) c[i][j] = a[i][j] + b[i][j];
+            }
+            in(c,n,m);
+        }
+    </pre>
+    <h3>Nhân 2 ma trận</h3>
+    <p>Công thức: a[n][<mark>m</mark>] x b[<mark>m</mark>][p] = c[n][q]</p>
+    <pre><br>
+      #include < stdio.h >
+        int main()
+        {
+            int n,m,p; scanf("%d%d%d",&n,&m,&p);
+            int a[n][m], b[m][p], c[n][p];
+            <i>// Nhập ma trận a[n][m]</i>
+            for(int i=0;i < n;i++){
+                for(int j=0;j < m;j++) scanf("%d",&a[i][j]);
+            }
+            <i>// Nhập ma trận b[m][p]</i>
+            for(int i=0;i < m;i++){
+                for(int j=0;j < p;j++) scanf("%d",&b[i][j]);
+            }
+            <i>// Nhân 2 ma trận</i>
+            for(int i=0;i < n;i++)
+            {
+                for(int j=0;j < p;j++)
+                {
+                    c[i][j]=0;
+                    for(int k=0;k < m;k++)
+                    {
+                        c[i][j] += a[i][k] * b[k][j];
+                    }
+                }
+            }
+            <i>// In ma trận</i>
+            for(int i=0;i < n;i++){
+                for(int j=0;j < p;j++) printf("%d ",c[i][j]);
+                    printf("\n");
+            }
+        }
+    </pre>
+    <h3>Ma trận chuyển vị</h3>
+    <p>Công thức: a[n][m] = a[m][n]</p>
+    <pre><br>
+      #include < stdio.h >
+        void nhap(int a[][100], int n,int m)
+        {
+            for(int i=0;i < n;i++){
+                for(int j=0;j < m;j++) scanf("%d",&a[i][j]);
+            }
+        }
+        void in(int a[][100], int n,int m)
+        {
+            for(int i=0;i < n;i++){
+                for(int j=0;j < m;j++) printf("%d ",a[i][j]);
+                printf("\n");
+            }
+        }
+        int main()
+        {
+            int a[100][100], b[100][100];
+            int n,m; scanf("%d%d",&n,&m);
+            nhap(a,n,m);
+            <i>// Chuyển vị ma trận</i>
+            for(int i=0;i < m;i++)
+            {
+                for(int j=0;j < n;j++) b[i][j] = a[j][i];
+            }
+            in(b,<i>m</i>,<i>n</i>);
+        }
+    </pre>
+    <h3>Ma trận vuông</h3>
+    <p>Định nghĩa: là ma trận có số cột bằng số hàng a[n][n]</p>
+    <pre><br>
+      #include < stdio.h >
+        void nhap(int a[][100], int n,int m)
+        {
+            for(int i=0;i < n;i++){
+                for(int j=0;j < m;j++) scanf("%d",&a[i][j]);
+            }
+        }
+        void in(int a[][100], int n,int m)
+        {
+            for(int i=0;i < n;i++){
+                for(int j=0;j < m;j++) printf("%d ",a[i][j]);
+                printf("\n");
+            }
+        }
+        int main()
+        {
+            int a[100][100];
+            int n; scanf("%d",&n);
+            nhap(a,n,n);
+            <i>// Ma trận vuông</i>
+            in(a,n,n);
+        }
+    </pre>
+    <h3>Đường chéo chính</h3>
+    <p>Định nghĩa: là đường chéo có chỉ số hàng bằng chỉ số cột i=j</p>
+    <pre><br>
+      #include < stdio.h >
+      void nhap(int a[][100], int n,int m)
+      {
+          for(int i=0;i < n;i++){
+              for(int j=0;j < m;j++) scanf("%d",&a[i][j]);
+          }
+      }
+      int main()
+      {
+          int a[100][100];
+          int n; scanf("%d",&n);
+          nhap(a,n,n);
+          <i>// Đường chéo chính</i>
+          for(int i=0;i < n;i++)
+              {
+                  for(int j=0;j < n;j++)
+                  {
+                      if(<i>i == j</i>)
+                      {
+                          printf("%d ",a[i][j]);
+                      } else printf("  ");
+                  } printf("\n");
+              }
+      }
+    </pre>
+    <h3>Đường chéo phụ</h3>
+    <p>Định nghĩa: j = n-i-1</p>
+    <pre><br>
+      #include < stdio.h >
+        void nhap(int a[][100], int n,int m)
+        {
+            for(int i=0;i < n;i++){
+                for(int j=0;j < m;j++) scanf("%d",&a[i][j]);
+            }
+        }
+        int main()
+        {
+            int a[100][100];
+            int n; scanf("%d",&n);
+            nhap(a,n,n);
+            <i>// Đường chéo phụ</i>
+            for(int i=0;i < n;i++)
+                {
+                    for(int j=0;j < n;j++)
+                    {
+                        if(<i>j == n-i-1</i>)
+                        {
+                            printf("%d ",a[i][j]);
+                        } else printf("  ");
+                    } printf("\n");
+                }
+        }
+    </pre>
+    <h3>Ma trận tam giác trên</h3>
+    <p>Định nghĩa: j>=i</p>
+    <pre><br>
+      #include < stdio.h >
+        void nhap(int a[][100], int n,int m)
+        {
+            for(int i=0;i < n;i++){
+                for(int j=0;j < m;j++) scanf("%d",&a[i][j]);
+            }
+        }
+        int main()
+        {
+            int a[100][100];
+            int n; scanf("%d",&n);
+            nhap(a,n,n);
+            <i>// Ma trận tam giác trên</i>
+            for(int i=0;i < n;i++)
+                {
+                    for(int j=0;j < n;j++)
+                    {
+                        if(<i>j >= i</i>)
+                        {
+                            printf("%d ",a[i][j]);
+                        } else printf("  ");
+                    } printf("\n");
+                }
+        }
+    </pre>
+    <h3>Ma trận tam giác dưới</h3>
+    <p>Định nghĩa: j<=i</p>
+    <pre><br>
+      #include < stdio.h >
+      void nhap(int a[][100], int n,int m)
+      {
+          for(int i=0;i < n;i++){
+              for(int j=0;j < m;j++) scanf("%d",&a[i][j]);
+          }
+      }
+      int main()
+      {
+          int a[100][100];
+          int n; scanf("%d",&n);
+          nhap(a,n,n);
+          <i>// Ma trận tam giác dưới</i>
+          for(int i=0;i < n;i++)
+              {
+                  for(int j=0;j < n;j++)
+                  {
+                      if(<i>j <= i</i>)
+                      {
+                          printf("%d ",a[i][j]);
+                      } else printf("  ");
+                  } printf("\n");
+              }
+      }
+    </pre>
+  </body>
+</html>

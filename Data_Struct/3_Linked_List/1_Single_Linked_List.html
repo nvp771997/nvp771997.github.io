@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Single Linked Lish</title>
+    <style>
+      .syntax {
+        color: red;
+      }
+      pre {
+        background-color: rgb(11, 9, 9);
+        color: rgb(142, 89, 215);
+        width: 100%;
+        height: 50%;
+      }
+      i {
+        color: aliceblue;
+      }
+      h3 {
+        text-shadow: 2px 2px 5px rgb(255, 69, 106);
+        text-align: center;
+        font-size: 40px;
+      }
+      h1 {
+        text-align: center;
+        text-shadow: 2px 2px 5px violet;
+        font-size: 50px;
+      }
+      h2 {
+        text-align: center;
+        text-shadow: 2px 2px 5px rgb(29, 226, 11);
+        font-size: 50px;
+      }
+      h4 {
+        text-align: center;
+        text-shadow: 2px 2px 5px rgb(12, 209, 202);
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Danh sách liên kết đơn</h1>
+    <p>Là 1 cấu trúc tự trỏ</p>
+    <h2>Cấu trúc một node của DSLK</h2>
+    <pre><br>
+      struct node{
+        int data;
+        struct node *next; <i> //Lưu địa chỉ của node sau</i>
+    };
+    </pre>
+    <h2>Duyệt DSLK</h2>
+    <p><b>Lưu ý:</b>node heap phải là con trỏ thì nó mới quản lý được cái node</p>
+    <pre><br>
+      void duyet(node *head){ 
+        while(head != NULL){ <i>// duyệt qua cả nút cuối cùng</i>
+            printf("%d ",head->data);
+            head = head->next; <i>Dịch head sang node bên phải</i>
+        }
+    </pre>
+    <h2>Đếm số lượng node trong DSLK</h2>
+    <pre><br>
+      int size(node *head){
+        int cnt = 0;
+        while(head != NULL){
+            ++cnt;
+            head = head->next;
+        }
+        return cnt;
+    }
+    </pre>
+    <h2>Cấp phát 1 node mới</h2>
+    <pre><br>
+     <i> // Tạo 1 node mới có phần data là số x</i>
+  node* makeNode(int x){
+    <i>//Cấp phát động 1 node</i>
+    node *newNode = (node*)malloc(sizeof(node));
+    newNode->data = x;
+    newNode->next = NULL;
+    return newNode;
+}
+    </pre>
+    <h2>Các thao tác trên DSLK</h2>
+    <h3>Thêm node vào DSLK</h3>
+    <ul>
+      <li>Thêm đầu</li>
+      <li>Thêm vào giữa</li>
+      <li>Thêm vào cuối</li>
+    </ul>
+    <h4>Thêm 1 node vào đầu danh sách</h4>
+    <pre><br>
+     <i> // Them 1 node vao dau DSLK</i>
+      <i>// **heap : con trỏ trỏ đến con trỏ</i>
+      void pushFront(node **heap, int x){ <i>// con trỏ cấp 2 để thay đổi dslk</i>
+          <i>// B1: Cập nhật next của node mới bằng địa trỉ mà con trỏ heap đang lưu</i>
+          node *newNode = makeNode(x); <i>// Địa chỉ của node vừa thêm sẽ được gán vào con trỏ newNode</i>
+          <i>// Lấy địa chỉ của node đầu tiên mà *heap đang lưu gán cho node mới</i>
+          newNode->next = (*heap); <i>// Giải tham chiếu = địa chỉ của node đầu tiên</i>
+          <i>// B2: Cập nhật nội dụng của node heap</i>
+          (*heap) = newNode; <i>// Thay đổi địa chỉ của mà heap đang lưu hành địa chỉ của node vừa thêm vào</i>
+      }
+    </pre>
+    <h4>Thêm 1 node vào cuối danh sách</h4>
+    <pre><br>
+      <i>// Thêm 1 node vào cuối danh sách </i>
+     
+      void pushBack(node **head, int x){
+        node* newNode = makeNode(x);
+        node *temp = (*head);
+       <i> // Nếu DSLK rỗng</i>
+        if(temp == NULL){
+            (*head) = newNode; return;
+        }
+       <i> // B1: Duyệt từ đầu danh sach đến cuối dánh sách thì dùng lại</i>
+        while(temp->next != NULL){ <i>//temp->next là node cuối cùng trong DSLK chứ không phải duyệt qua luôn</i>
+            temp = temp->next;
+        } 
+       <i> // B2: Cho phần tử next của nút cuối trỏ vào địa chỉ node mới được thêm</i>
+        temp->next = newNode;
+    }
+    </pre>
+    <h4>Chèn 1 node vào vị trí k trong danh sách</h4>
+    <pre><br>
+      <i>// Thêm 1 node vào vị trí k trong danh sách</i>
+      void insert(node **head, int k, int  x){
+          int n = sizeof(*head);
+          if(k < 1 || k > n+1) return; <i>// Vị trí chèn ko hợp lợi</i>
+          if(k==1){ <i>//Nếu k=1 thì chèn vào đầu sanh sách</i>
+              pushFront(heap,x);
+              return;
+          }
+          else if(k==n+1){ <i>//Nếu k=n+1 thì chèn vào cuối danh sách</i>
+              pushBack(head,x); 
+              return;
+          }
+          else{ <i>//Nếu k ở giữa</i>
+              node *temp = (*head);
+              <i>//B1: Duyệt node đến vị trí cần chèn K-1</i>
+              for(int i=1;i < k-1;i++){
+                  temp = temp->next;
+              }
+              node* newNode = makeNode(x);
+             <i> //B2: Cho phần tử next của newNode lưu vào địa chỉ của node thứ k</i>
+              newNode->next = temp->next; //Địa chỉ của node thứ k
+              <i>//B3: Cho phần next của node thứ k-1 lưu địa chỉ của node mới</i>
+              temp->next = newNode;
+          }
+      }
+    </pre>
+    <h3>Xóa node khỏi DSLK</h3>
+    <ul>
+      <li>Xóa ở đầu danh sách</li>
+      <li>Xóa ở giữa danh sách</li>
+      <li>Xóa ở cuối danh sách</li>
+    </ul>
+    <h4>Xóa node khỏi đầu dslk</h4>
+    <pre><br>
+      void xoadau(node **heap){
+        if(*heap == NULL) return; <i>//Danh sách rỗng thì thoát</i>
+        <i>// B1: cho node head lưu node thứ 2 trong dslk</i>
+        node *temp = (*head);
+        *heap = (*head)->next; <i>//Hoặc *heap = temp->next;</i>
+       <i> // B2: Giải phóng node đầu trong danh sách</i>
+        free(temp);
+    }
+    </pre>
+    <h4>Xóa node ở cuối dslk</h4>
+    <pre><br>
+      <i>// Xóa node ở cuối dslk</i>
+      void popBack(node **head){
+          <i>// Kiểm tra danh sách có rỗng không</i>
+          if(*head == NULL) return;
+         <i> // Trường hợp nếu chỉ có 1 node</i>
+          node *temp = (*head);
+          if(temp->next == NULL){
+              *head = NULL;
+              free(temp);
+              return;
+          }
+          <i>// B1: tìm node thứ 2 từ cuối trỏ về gọi là tmp</i>
+          while(temp->next->next != NULL){ 
+              temp = temp->next;
+          }
+          <i>// Lưu phần tử cuối cùng</i>
+          node *last = temp->next;
+          <i>// B2: Cho phần next của tmp trỏ vào NULL</i>
+          temp->next = NULL;
+          <i>// B3: Giải phóng node cuối cùng</i>
+          free(last);
+      }
+    </pre>
+    <h4>Xóa node ở giữa</h4>
+    <pre><br>
+      <i>// Xóa 1 node ở vị trí thứ k trong dslk</i>
+      void erase(node **head, int k){
+          <i>// Kiểm tra có hợp lợi ko</i>
+          if(k < 1 || k > sizeof(*head)) return;
+          if(k==1){
+              popFront(heap); 
+          }
+          else{
+              node *temp = (*head);
+              for(int i=1;i < k-1;i++){
+                  temp = temp->next;
+              }
+              <i>// Vị trí temp: k-1</i>
+              node* del = temp->next; <i> // node thứ k</i>
+              temp->next = del->next;
+              free(del);
+          }
+      }
+    </pre>
+    <h3>Sắp xếp DSLK đơn bằng Selection Sort</h3>
+    <pre><br>
+      void SelectionSort(node **head){
+        for(node *i = (*head); i != NULL; i = i->next){
+            node *min = i;
+            for(node *j=i->next; j != NULL; j = j->next){
+                if(min->data > j->data){
+                    min = j;
+                }
+            }
+            int tmp = min->data;
+            min->data = i->data;
+            i->data = tmp;
+        }
+    }
+    </pre>
+    <h3>Sắp xếp DSLK đơn bằng Bubble Sort</h3>
+    <pre><br>
+      void Bubbleort(node **head){
+        for(node *i = *head; i != NULL; i = i->next){
+          for(node *j = i->next; j != NULL; j = j->next){
+            if(i->data > j->data){
+              int temp = i->data;
+              i->data = j->data;
+              j->data = temp;
+            }
+          }
+        }
+     }
+    </pre>
+  </body>
+</html>

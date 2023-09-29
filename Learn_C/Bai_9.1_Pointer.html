@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài tập cơ bản về con trỏ</title>
+    <style>
+      /* body {
+                                                    background-image: url(photto/mo.jpg);
+                                                   
+                                                    background-size: 100%;
+                                                  } */
+      pre {
+        background-color: rgb(11, 9, 9);
+        color: rgb(142, 89, 215);
+        width: 90%;
+        height: 50%;
+      }
+      i {
+        color: aliceblue;
+      }
+      h3 {
+        text-shadow: 2px 2px 5px rgb(255, 69, 106);
+        text-align: center;
+        font-size: 30px;
+      }
+      h1 {
+        text-align: center;
+        text-shadow: 2px 2px 5px violet;
+        font-size: 50px;
+      }
+      .syntax {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Chuyển từ thập phân sang nhị phân</h3>
+    <pre><br>
+         <i>//Cách 1</i>
+           #include < stdio.h>
+           #include < math.h>
+           void dq(int n){
+                if(n==0) return;
+                else {
+                   dq(n/2);
+                   printf("%d",n%2);
+                }
+           }
+           int main(){
+               int n; scanf("%d",&n);
+               if(n==0) printf("0");
+               else
+               dq(n);
+           }
+      </pre>
+    <pre><br>
+         <i>//Cách 2</i>
+           #include < stdio.h>
+           #include < math.h>
+           void dq(int n){
+                if(n!=0){
+                   dq(n/2);
+                   printf("%d",n%2);
+                }
+           }
+           int main(){
+               int n; scanf("%d",&n);
+               if(n==0) printf("0");
+               else
+               dq(n);
+           }
+      </pre>
+         <pre><br>
+         <i>//Cách 3</i>
+           #include < stdio.h>
+           #include < math.h>
+           void dq(int n){
+                if(n < 2) printf("%d",n);
+                else {
+                   dq(n/2);
+                   printf("%d",n%2);
+                }
+           }
+           int main(){
+               int n; scanf("%d",&n);
+               dq(n);
+           }
+      </pre>
+      <h3>Chuyển từ thập phân sang hệ 16</h3>
+      <pre><br>
+           <i>Cách 1</i>
+           #include < stdio.h>
+           #include < math.h>
+           void dq(int n){
+                if(n==0) return;
+                
+                else {
+                   dq(n/16);
+                   int r = n%16;
+
+                   if(r<=9) printf("%d",r);
+                   else printf("%c",r+55);
+                }
+           }
+           int main(){
+               int n; scanf("%d",&n);
+               if(n==0) printf("0");
+               else
+               dq(n);
+           }
+      </pre>
+      <pre><br>
+       <i>Cách 2</i>
+           #include < stdio.h>
+           #include < math.h>
+           void dq(int n){
+                if(n!=0){
+                   dq(n/16);
+                   int r = n%16;
+
+                   if(r<=9) printf("%d",r);
+                   else printf("%c",r+55);
+                }
+           }
+           int main(){
+               int n; scanf("%d",&n);
+               if(n==0) printf("0");
+               else
+               dq(n);
+           }
+         
+      </pre>
+      <pre><br>
+         <i>Cách 3</i>
+           #include < stdio.h>
+           #include < math.h>
+           void dq(int n){
+                if(n < 16){
+                    if(n<=9) printf("%d",n);
+                    else printf("%c",n+55);
+                }
+                else {
+                   dq(n/16);
+                   int r = n%16;
+
+                   if(r<=9) printf("%d",r);
+                   else printf("%c",r+55);
+                }
+           }
+           int main(){
+               int n; scanf("%d",&n);
+               dq(n);
+           }
+      </pre>
+      <h3>Tính tổng chữ số của n</h3>
+      <p>S(n) = </p>
+      <ul>
+           <li>Bài toán con nhỏ nhất: nếu n < 10 thì trả về n</li>
+           <li>Công thức truy hồi: n%10 + S(n/10), n>=10</li>
+      </ul>
+      <pre><br>
+
+         int tong(int n){
+         if(n < 10) return n;
+         else return n%10 + tong(n/10);
+         }
+ 
+     </pre
+     <h3>Đếm số lượng chữ số của n</h3>
+     <ul>
+       <li>Bài toán con nhỏ nhất: nếu n < 10 thì trả về 1</li>
+       <li>Công thức truy hồi: 1 + C(n/10)</li>
+     </ul>
+     <pre><br>
+ 
+           int DCS(int n){
+                if(n < 10) return 1;
+                else return 1 + DCS(n/10);
+           }
+ 
+</pre>
+       
+   <h3>Tìm chữ số đầu tiên của n</h3>
+   <ul>
+       <li>Bài toán con nhỏ nhất: nếu n < 10 thì trả về n</li>
+       <li>Công thức truy hồi: SDT(n/10)</li>
+   </ul>
+   <pre><br>
+      int SDT(int n){
+                if(n < 10) return n;
+                else return SDT(n/10);
+           }
+   </pre>
+   <h3>Tìm chữ số lớn nhất và nhỏ nhất</h3>
+   <ol>
+       <li> Tìm max
+           <ul>
+                <li>Bài toán con nhỏ nhất: nếu n < 10 thì trả về n</li>
+                <li>Công thức truy hồi: <i class="syntax">fmax(n%10, max(n/10))</i> </li>
+           </ul>
+       </li>
+       <pre><br>
+        int max(int n){
+                if(n < 10) 
+                    return n;
+                else 
+                    return fmax(n%10, max(n/10));
+           }
+            
+       </pre>
+       <li> Tìm min: 
+            <ul>
+                <li>Bài toán con nhỏ nhất: nếu n < 10 thì trả về n</li>
+                <li>Công thức truy hồi: <i class="syntax">fmin(n%10, min(n/10))</i></li>
+           </ul>
+       </li>
+            <pre><br>
+        int max(int n){
+                if(n < 10) 
+                    return n;
+                else 
+                    return fmax(n%10, max(n/10));
+           }
+            
+       </pre>
+   </ol>
+         <h3>In ra N theo thứ tự các chữ số từ trái qua phải và từ phải qua trái</h3>
+         <pre><br>
+       <i>//Hàm in từ phải qua trái</i>
+          void pt(int n){
+                if(n < 10) 
+                    printf("%d ",n);
+                else{
+                    printf("%d ",n%10);
+                    pt(n/10);
+                } 
+                    
+           }
+           <i>//Hàm in từ trái qua phải</i>
+           void tp(int n){
+                if(n < 10) 
+                    printf("%d ",n);
+                else{
+                    tp(n/10);
+                    printf("%d ",n%10);
+                    
+                } 
+           }
+         </pre>
+         <h3>Tính tổng chữ số chẵn lẻ</h3>
+         <pre><br>
+                      int chan(long long n){
+                if(n < 10) 
+                    if(n%2==0) return n;
+                    else return 0;
+                else{
+                    if(n % 10 % 2 == 0)
+                        return n%10 + chan(n/10);
+                    else
+                        return chan(n/10);
+                } 
+                    
+           }
+           int le(long long n){
+                if(n < 10) 
+                    if(n%2==0) return 0;
+                    else return n;
+                else{
+                    if(n % 10 % 2 == 1)
+                        return n%10 + le(n/10);
+                    else
+                        return le(n/10);
+                } 
+                    
+           }
+        </pre>
+        <h3>Kiểm tra xem tất cả các chữ số của N có phải đều là số chẵn hay không</h3>
+        <pre><br>
+                int kt(long long n){
+                if(n < 10){
+                    if(n%2 == 0) return 1;
+                    else return 0;
+                }
+                else {
+                    if(n%10%2 == 1) 
+                        return 0;
+                    else
+                        return kt(n/10);
+                }
+            }
+        </pre>
+  </body>
+</html>

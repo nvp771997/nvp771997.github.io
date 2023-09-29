@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Các hàm đọc file</title>
+    <style>
+      .syntax {
+        color: red;
+      }
+      pre {
+        background-color: rgb(11, 9, 9);
+        color: rgb(142, 89, 215);
+        width: 100%;
+        height: 50%;
+      }
+      i {
+        color: aliceblue;
+      }
+      h3 {
+        text-shadow: 2px 2px 5px rgb(255, 69, 106);
+        text-align: center;
+        font-size: 30px;
+      }
+      h1 {
+        text-align: center;
+        text-shadow: 2px 2px 5px violet;
+        font-size: 50px;
+      }
+      h2 {
+        text-align: center;
+        text-shadow: 2px 2px 5px rgb(29, 226, 11);
+        font-size: 50px;
+      }
+      h5 {
+        text-align: center;
+        text-shadow: 2px 2px 5px rgb(240, 244, 25);
+         font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+     <h1>Các hàm đọc file</h1>
+     <h5>Đọc 1 kí tự từ file</h5>
+     <p>Đọc 1 kí tự từ file, nếu tới cuối file và không đọc được nữa thì hàm này trả về EOF</p>
+     <pre><br>
+        <i>Syntax</i>
+        fgetc(<i class="syntax">file_pointer</i>);
+     </pre>
+     <pre><br>
+        <i>VD:</i>
+       #include < stdio.h>
+       #include < string.h>
+       int main(){
+          FILE *f;
+          f = fopen("input.txt", "r"); <i>//Read</i>
+           if(f == NULL){
+              printf("Khong ton tai\n");
+           }
+           else{
+               char c = fgetc(f);
+               while(c != EOF){ <i class="syntax">//nếu tới cuối file và không đọc được nữa thì hàm này trả về EOF</i>
+                    printf("%c",c);
+                    c = fgetc(f);
+               }
+           }
+          fclose(f);
+       }
+     </pre>
+     <h3>Đọc từ bàn phím</h3>
+      <pre><br>
+        <i>Syntax</i>
+        fscanf(<i class="syntax">file_pointer</i>, format, variables);
+     </pre>
+     <pre><br>
+        <i>VD:</i>
+       #include < stdio.h>
+       #include < string.h>
+       int main(){
+          FILE *f;
+          f = fopen("input.txt", "r"); <i>//Read</i>
+           if(f == NULL){
+              printf("Khong ton tai\n");
+           }
+           else{
+              <i>//Đọc số</i>
+              int n; fscanf(f, "%d", &n);
+              int a[n];
+              for(int i=0;i < n;i++) fscanf(f, "%d",a+i);
+              for(int i=0;i < n;i++) printf("%d ",a[i]);
+              printf("\n");
+              <i>//Đọc chuỗi</i>
+              char c[70];
+              fscanf(f, "%s",c);
+              printf("%s\n",c);
+           }
+          fclose(f);
+       }
+     </pre>
+     <pre><br>
+        <i>Đọc hết các số bằng fscanf</i>
+       #include < stdio.h>
+       #include < string.h>
+       int main(){
+          FILE *f;
+          f = fopen("input.txt", "r"); <i>//Read</i>
+           if(f == NULL){
+              printf("Khong ton tai\n");
+           }
+           else{
+              <i>//Đọc số</i>
+               int n;
+               while(fscanf(f, "%d",&n) != -1){ <i class="syntax">//Khi đọc hết các giá trị thì trả về -1</i>
+                   printf("%d ",n);
+                 }
+               }
+          fclose(f);
+       }
+     </pre>
+     <pre><br>
+        <i>Đọc hết các chuỗi ở trong xâu bằng fscanf</i>
+       #include < stdio.h>
+       #include < string.h>
+       int main(){
+          FILE *f;
+          f = fopen("input.txt", "r"); <i>//Read</i>
+           if(f == NULL){
+              printf("Khong ton tai\n");
+           }
+           else{
+              <i>//Đọc chuỗi</i>
+               char c[70];
+               while(fscanf(f, "%s",c) != -1){ <i class="syntax">//Khi đọc hết các giá trị thì trả về -1</i>
+                   printf("%s ",c);
+                 }
+               }
+          fclose(f);
+       }
+     </pre>
+     <h3>Đọc cả 1 dòng trong file</h3>
+     <pre><br>
+        <i>Syntax</i>
+        fgets(buffer, size, <i class="syntax">file_pointer</i>);
+     </pre>
+     <pre><br>
+        <i>VD: Đọc cả 1 dòngh</i>
+       #include < stdio.h>
+       #include < string.h>
+       int main(){
+          FILE *f;
+          f = fopen("input.txt", "r"); <i>//Read</i>
+           if(f == NULL){
+              printf("Khong ton tai\n");
+           }
+           else{
+               char c[100];
+               fgets(c, 100, f); <i>//Chôi lệnh nếu đọc nhiều hàng</i>
+               printf("%s\n",c);
+           }
+          fclose(f);
+       }
+      </pre>
+      <pre><br>
+         <i>Đọc nhiều dòng bằng loop while</i>
+        #include < stdio.h>
+        #include < string.h>
+        int main(){
+           FILE *f;
+           f = fopen("input.txt", "r"); <i>//Read</i>
+            if(f == NULL){
+               printf("Khong ton tai\n");
+            }
+            else{
+               while(fgets(c, 100, f) != NULL){  <i class="syntax">//Ở xâu thì khi đọc hết giá trị thì trả về NULL</i>
+                  printf("%s\n",c);
+                }
+             }
+            }
+           fclose(f);
+        }
+      </pre>
+
+  </body>
+</html>

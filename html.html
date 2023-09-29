@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>NVP</title>
+    <link rel="icon" href="photto/nvp.icon.png" />
+    <link rel="stylesheet" href="css/html.css">
+    <link rel="stylesheet" href="php/ex1.php">
+     
+     
+     
+  </head>
+  <body>
+    <h1>Học HTML</h1>
+    <h2>Liên kết trong html</h2>
+    <p><b>Cú pháp:</b></p>
+    <p><mark>&lt;a hrel = "URL" target="nơi mở tài liệu"&gt; name link  &lt;/a&gt;</mark></p>
+     <p><b>VD:</b><a href="https://www.w3schools.com/html/html_basic.asp" target="_blank">Web3schools</a></a></p>
+     <p><b>Giải thích:</b></p>
+     <p>-href: thuộc tính này chỉ định URL của trang định chỉ định tới</p>
+     <p>-target nhận các giá trị sau:</p>
+     _top: mở trong tag hiện tại
+     _blank: mở trong tag mới
+     
+
+     <hr>
+
+     <h2>Ảnh trong html</h2>
+     <p><b>Cú pháp:</b></p>
+     <p><mark>&lt;img src="link_ảnh" alt="name_ảnh" width="chiều_rộng" height="chiều_cao" &gt;</mark></p>
+     <p><b>Giải thích:</b></p>
+     <p>-src: thuộc tính này chỉ định đường dẫn đến ảnh</p>
+     <p>-alt: là tên của ảnh sẽ hiển thị khi mà ảnh ko hiển thị dc</p>
+     <p>-width: chiều cao của ảnh </p>
+     <p>-height: chiều rộng của ảnh</p>
+     <p><b>VD:</b></p>
+     <img src="photto/nakroth.jpg" alt="Ảnh_Nakroth" width="500">
+
+     <hr>
+
+     <h2>Cách tạo icon cho html</h2>
+     <p><b>Cú pháp:</b></p>
+     <p><mark>&lt;link rel="icon" href="link_icon"&gt;</mark></p>
+     <h3>Chú ý: cú pháp này dc đặt trong thẻ &lt;head&gt; nằm trên thẻ body</h3>
+
+     <hr>
+
+     <h2>Cách căn lề cho đoạn văn bản</h2>
+     <p><b>Cú pháp:</b></p>
+     <p><mark>&lt;p align="value"&gt; đoạn văn bản &lt;/p&gt;</mark></p>
+     <p><b>Value nhận các giá trị sau:</b></p>
+     <p>-left: vb canh nằm bên trái</p>
+     <p>-right: vb canh nằm bên phải</p>
+     <p>-center: vb canh nằm giữa</p>
+     <p>-justify: vb canh căn đều trái phải</p>
+     <p><b>Mặc định:</b> văn bản luôn tự canh lề bên trái</p>
+
+     <hr>
+
+     <h2>Thuộc tính tiêu đề title</h2>
+     <p><b>Cú pháp</b></p>
+     <p><mark>&lt;p title="name_tiêu_đề" &gt; Đây là tiêu đề &lt;/p&gt;</mark></p>
+     <p>Thử đưa con chuộc lại VD là sẽ biết ?</p>
+     <p><b>VD:</b></p>
+     <p title="Nakroth">Giá trị của title sẽ hiển thị khi đưa con chuộc lại tiều đề này</p>
+
+     <hr>
+
+     <h2>Cách cho tiêu đề lớn hơn</h2>
+     <p>Bằng cách sữ dụng thuôc tính style</p>
+     VD: <p><mark>&lt;p style="font-size:60px;&gt; Tiêu đề lớn hơn &lt;/p&gt;"</mark></p>
+     VD cụ thể: <p style="font-size: 100px;">Nakroth</p>
+
+     <hr>
+
+     <h2>Cách giữ nguyên định dạng của đoạn văn bản bằng pre</h2>
+     <p><b>Cách làm là đặt đoạn vb vào thẻ <mark>&lt;pre&gt;</mark></b></p>
+     VD: 
+     <pre>
+         Có công mài ngói 
+                 có ngày nên gương?
+     </pre>
+
+     <hr>
+
+     <h2>Các thẻ định dạng trong văn bản</h2>
+     <p>-Thẻ &lt;b&gt;: dùng để in đậm đoạn vb</p>
+     VD: <p><b>Đoạn vb in đậm</b></p>
+
+     <p>-Thẻ &lt;i&gt;: dùng để in nghiên đoạn vb</p>
+     VD: <p><i>Đoạn vb in nghiêng</i></p>
+
+     <p>-Thẻ &lt;u&gt;: dùng để gạch dưới vb</p>
+     VD: <p><u>Đoạn vb gạch dưới</u></p>
+
+     <p>-Thẻ &lt;s&gt;: dùng để tạo 1 đường kẻ nẳm giữa đoạn vb</p>
+     VD: <p><s>Đoạn vb có đường gạch ở giữa vb</s></p>
+
+     <p>-Thẻ &lt;mark&gt;: dùng để bôi vàng vb</p>
+     VD: <p><mark>Đoạn vb dc bôi vàng</mark></p>
+     ......
+
+     <hr>
+
+     <h2>Thuộc tính style trong HTML</h2>
+     <p><b>Cú pháp:</b> <mark>&lt; tagname style="property: value;" &gt;</mark>  </p>
+     <p><b>Giải thích:</b></p>
+     <p>-tagname: tên thẻ</p>
+     <p>-property: thuộc tính</p>
+     <p>-value: giá trị của thuộc tính</p>
+     VD: Chuyển chử Nakroth sang mùa tím thì ta dung thuộc tính color: violet;
+     <p style="color: violet;">Nakroth</p>
+     <p><b>Các thuộc tính thường gặp:</b></p>
+     - color: đổi màu của thẻ
+     - background color: màu nền của thẻ
+     - font-family: phong của chữ
+     - font-size: cỡ chữ
+     - text-align: căn chỉnh văn bản
+
+     <hr>
+
+     <h2>Một số ký tự đặc biệt</h2>
+      
+     <p>&lt; và &gt;</p>
+     <p>&amp; -> &amp</p>
+     <p>&euro; -> &euro</p>
+     <p>&dollar; -> &dollar</p>
+     <p>&ndash; -> &ndash</p>
+     <p>&copy; -> &copy</p>
+     <p>&reg; -> &reg</p>
+     <p>&trade; -> &trade</p>
+     <p>&phone; -> &phone</p>
+
+     <hr>
+
+     <h2>Liên kết trong HTML</h2>
+     <p><b>Liên kết bằng hình ảnh</b></p>
+     VD: &lt;a hrel="url" target="blank"&gt; &lt;img src="link_ảnh" alt="Nakroth" width="100px"&gt; &lt;/a&gt;
+     <a href="https://www.w3schools.com/html/html_links.asp" target="_blank"><img src="photto/nakroth.jpg" alt="Nakroth" width="100px"> </a>
+       
+     <hr>
+
+     <h2>Ảnh trong HTMl</h2>
+     <p><b>Hình nền cho 1 phần tử</b></p>
+     <p>Để tránh cho ảnh lặp lại ta dùng: background-repeat: no-repeat;</p>
+     VD: &lt;p style="background-image: url('img_girl.jpg');">&lt;/p>
+     <p style="background-image: url('photto/nakroth.jpg'); background-repeat: no-repeat; color: aqua;">dshfjhdsfjhhhhhhhhhhhhhhhhdhsfhjdfsf<br>sahdfhsdfjdhjfsjhdf</p>
+     
+     <p><b>Bản đồ hình ảnh</b></p>
+     <p>Vào link này để coi chi tiết <a href="https://www.w3schools.com/html/html_images_imagemap.asp">link_coi_chi_tiết_bản_đồ_hình_ảnh</a></p>
+       
+
+     <hr>
+
+     <h2>Bảng trong HTML</h2>
+     <table  border="1" s>
+      <tr>
+        <th>Nakroth</th>
+        <td>340</td>
+      </tr>
+
+        <tr>
+            <td>123</td>
+            <td>456</td>
+        </tr>
+     </table>
+
+     <p><b>Các thuộc tính thường được dùng trong bảng:</b></p>
+     <p><b>border</b>: Thiết lập độ dày của cái đường viền bao xung quanh bảng và các ô.</p>
+     <p><b>cellspacing</b>:Thiết lập khoảng cách nằm giữa mỗi hai đường viền lân cận.</p>
+     <p><b>bgcolor</b>: Thiết lập màu nền cho bảng hoặc các ô.</p>
+     <p><b>width</b>: Thiết lập chiều rộng cho bảng hoặc các ô.</p>
+     <p><b>height</b>: Thiết lập chiều cao cho bảng hoặc các ô.</p>
+     <p><b>align</b>: Canh lề cho nội dung bên trong ô (theo chiều ngang)</p>
+     <p><b>valign</b>: Canh lề cho nội dung bên trong ô (theo chiều dọc)</p>
+
+     <p><b>Cách gộp các ô bên trong bảng lại với nhau</b></p>
+     <p><b>1) Gộp ô theo hàng ngang</b></p>
+     <p><b>Cú pháp:</b></p>
+     <p>colspan="số ô muốn gộp"</p>
+     <p><b>VD:</b></p>
+     <table border="1">
+      <tr>
+         <td colspan="4">Bảng đã gộp ô hàng ngang</td>
+      </tr>
+       <tr>
+            <td>STT</td>
+            <td>Họ</td>
+            <td>Tên</td>
+            <td>Năm sinh</td>
+       </tr>
+       <tr>
+            <td>1</td>
+            <td>Nguyễn</td>
+            <td>Phát</td>
+            <td>2003</td>
+       </tr>
+       <tr>
+        <td>2</td>
+        <td>Lê</td>
+        <td>Tre</td>
+        <td>2007</td>
+   </tr>
+     </table>
+     
+     <p><b>2) Gộp các ô theo chiều dọc</b></p>
+
+     <p><b>Cú pháp:</b></p>
+     <p><mark>rowspan="số ô muốn gộp lại với nhau"</mark></p>
+     <p><b>VD:</b></p>
+     <table border="1">
+        <tr>
+            <td rowspan="3">Ô gộp theo chiều dọc</td>
+            <td>Họ</td>
+            <td>Tên</td>
+        </tr>
+        <tr>
+           <td>Nguyễn</td>
+           <td>Mèo</td>
+        </tr>
+        <tr>
+          <td>Lê</td>
+          <td>Chó</td>
+        </tr>
+     </table>
+     <p><b>Các VD để gút kinh nghiệm</b></p>
+      
+    <table border="1" style="color: red;" background="photto/nakroth.jpg">
+        <tr>
+            <th rowspan="2">Họ tên thí sinh</th>
+            <th rowspan="2">Ngày sinh</th>
+            <th rowspan="2">Giới tính</th>
+            <th colspan="3">Kết quả thi</th>
+        </tr>
+        <tr>
+            <th>Toán</th>
+            <th>Lý</th>
+            <th>Hóa</th>
+        </tr>
+        <tr>
+            <td>Trần Đức Anh</td>
+            <td>03/08/1993</td>
+            <td>Nam</td>
+            <td>7.25</td>
+            <td>8.0</td>
+            <td>3.75</td>
+        </tr>
+        <tr>
+            <td>Kiều Thị Thu Hằng</td>
+            <td>04/09/1991</td>
+            <td>Nữ</td>
+            <td>7.0</td>
+            <td>9.0</td>
+            <td>4.75</td>
+        </tr>
+        <tr>
+            <td>Vương Thị Lê Na</td>
+            <td>06/10/1991</td>
+            <td>Nữ</td>
+            <td>6.5</td>
+            <td>9.75</td>
+            <td>2.25</td>
+        </tr>
+    </table>
+    <p><b>Cách tạo tiêu đề cho cái bảng</b></p>
+    <p><b>Cú pháp:</b></p>
+    <p><mark>&lt;caption align="value">tiêu đề của cái bảng&gt;/caption></mark></p>
+    <p>value nhận 2 giá trị sau: top và bottom</p>
+    <p><b>Các thuộc tính của bảng:</b></p>
+    <b>border</b>: đường kẻ bảng
+    <b>bordercolor</b>: màu đường kẻ
+    <b>bgcolor</b>: màu nền
+    <b>background</b>: hình ảnh nền cho bảng
+
+ 
+
+    <hr>
+
+    <h2>Cách chèn video </h2>
+    <p><b>Cú pháp:</b></p>
+    <p><mark>&lt;video controls>
+      &lt;source src="đường dẫn đến tập tin video">
+    &lt;/video></mark></p>
+    <p><b>VD:</b></p>
+    <video controls width="700px">
+       <source src="photto/video.mp4">
+    </video>
+
+    <hr>
+
+    <h2>Cách chèn audio</h2>
+    <p><b>Cú pháp:</b></p>
+    <p><mark>&lt;audio controls>
+      &lt;source src="đường dẫn đến tập tin audio">
+    &lt;/audio></mark></p>
+    <p><b>VD:</b></p>
+    <audio controls>
+       <source src="photto/audio.wav">
+    </audio>
+
+    
+    <hr>
+
+    <h2>Chức năng của div và span</h2>
+    <p><b>div</b>: thuộc nhóm block element, dùng để layout trang theo dạng khối</p>
+    <p><b>span</b>: thuộc nhóm inline element, thông thường dc đùng để định dạng vb</p>
+     
+    <hr>
+
+    <h2>Danh sách list</h2>
+    <p><b>Có 2 kiểu danh sách chính là ol và ul</b></p>
+    <p><b>ol</b>: là danh sách có thứ tự</p>
+    <p><b>VD:</b></p>
+    <ol>
+       <li>HTML</li>
+       <li>CSS</li>
+       <li>JavaScript</li>
+    </ol>
+    <p><b>ul</b>: là danh sách ko có thứ tự</p>
+    <p><b>VD:</b></p>
+    <ul>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+    </ul>
+ 
+    <hr>
+
+    <h2>Cách chèn 1 cái khung vào bên trong trang web</h2>
+    <p><b>Khung là gì</b>:  Khung là một phần tử được tạo nên bởi thẻ &lt;iframe>, nó có chức năng gần giống với một cái Tab trên trình duyệt, đó chính là dùng để mở & thao tác với trang web.</p>
+    <p><b>Cú pháp:</b></p>
+    <p><mark>&lt;iframe src="URL">&lt;/iframe></mark></p>
+    
+    <p><b>VD:</b></p>
+    <iframe width="700px" height="400px" src="https://webcoban.vn/html/cach-chen-iframe-khung-trang-web-vao-trang-web.html"></iframe>
+     
+    <hr>
+
+    <h2>Tìm hiểu về id và class</h2>
+    <p><b>id</b>:  Thuộc tính id dùng để đặt tên cho phần tử, tên này phải là duy nhất, không có trường hợp tên id của các phần tử bị trùng nhau</p>
+     <p><i>Cú pháp đặt trong thẻ</i>: <mark>id="tên id"</mark></p>
+     <p>Cách gọi id: <mark>#nameid</mark></p>
+    
+     <br>
+     <p><b>class</b>: cũng giống với id, nhưng mà class có thể đặt cùng 1 tên cho nhiều phần tử còn id thì ko</p>
+     <p><i>Cú pháp đặt trong thẻ</i>: <mark>class="tên_class"</mark></p>
+     <p>Cách gọi class: <mark>.nameclass</mark></p>
+
+
+     <hr>
+     
+
+     <h2>Tìm hiểu sơ qua về bố cục trang web (web layout)</h2>
+     <p><b>Chi tiết việc thiết kế bố cục sẽ hc ở Bài CSS</b></p>
+     <b>Bố cục cơ bản bản của 1 trang web</b>
+     <div><img src="photto/bc.png" width="300px"> <b>Hoặc</b> <img src="photto/bc1.png" width="300px"></div>
+     
+       
+     <p><b>&lt;header&gt;</b>: xác định tiêu đề</p>
+     <p><b>&lt;nav&gt;</b>: liên kết các thanh điều hướng hay thanh menu</p>
+     <p><b>&lt;section&gt;</b>: 1 phần tài liệu</p>
+     <p><b>&lt;article&gt;</b>: 1 nd độc lập khép kín</p>
+     <p><b>&lt;aside&gt;</b>: nd bên cạnh nd, như 1 thanh bên</p>
+     <p><b>&lt;footer&gt;</b>: chân trang web thường chứa thông tin về: bản quyền, địa chỉ,...</p>
+      
+
+     <hr>
+
+     <h2>Tìm hiểu về biểu mẫu hay  form</h2>
+     <p><b>Phần tử &lt;form&gt;</b> dc sữ dụng để tạo biểu mẫu</p>
+      <p><b>1) Phần tử input</b></p>
+      <p>Một &lt;input>phần tử có thể được hiển thị theo nhiều cách, tùy thuộc vào type thuộc tính.</p> 
+       <p><b>Cú pháp:</b><mark>&lt;input type = "value"></mark></p>
+      <h2>1) Trường văn bản text</h2>
+     <p> &lt;input type=”text”> giúp bạn tạo một khung để người dùng nhập dữ liệu:</p>
+     <input type="text">
+     <p><b>Lưu ý:</b> Bản thân biểu mẫu không hiển thị. Cũng lưu ý rằng chiều rộng mặc định của trường nhập là 20 ký tự.</p>
+        
+    <h2>2) Phần tử &lt;label></h2>
+    <p><b>Thẻ &lt;label></b> dùng để xác định nhãn cho nhiều phần tử biểu mẫu.</p>
+    <p><b>Cách dùng:</b><a href="https://www.w3schools.com/html/html_forms.asp">bấm vào dây để biết cách dùng</a></p>
+    
+    <h2>3) Các nút radio</h2>
+    <p><mark>&lt;input type=”radio”> </mark>giúp bạn tạo một nút nhấn radio.</p>
+    
+    <input  type="radio" name="t"  >HTML <br>
+    
+    <input  type="radio" name="t"  >CSS<br>
+    
+    <input  type="radio" name="t"   >JavaScript
+   
+    <p><b>Lưu ý:</b>nếu ko có thêm name="tên" vào thì các nút sẽ ko chuyển đổi qua lai được</p>
+    
+    <h2>4) Kiểu checkbox</h2>
+    <p><mark>&lt;input type=”checkbox”> </mark> giúp bạn tạo một ô tích giá trị.</p>
+    <input type="checkbox">Thích chơi Liên Quân.<br>
+    <input type="checkbox">Thích chơi PUBG.<br>
+    <input type="checkbox">Thích chơi Đua xe.<br>
+    
+    <h2>5) Kiểu submit</h2>
+    <p><mark>&lt;input type=”submit”></mark> dùng để gữi dl trong form đến sever</p>
+
+    <form >
+     <input type="text" value="Nguyễn Văn A" name="name">
+       <input type="submit" value="Chọn">
+    </form>
+
+     <h2>Thuộc tính target (quy định cửa sổ trình duyệt) </h2>
+     <p>Thuộc <mark>target</mark>  định nơi hiển thị phản hồi nhận được sau khi gửi biểu mẫu.</p>
+     <p><b>Cú pháp</b>: <mark>target="giá trị"</mark></p>
+     <b>Thông thường thì nếu dùng target nhận _blank để chuyển sang tag mới</b>
+
+     <h2>6) Kiểu password</h2>
+     <p><mark>&lt;input type="password"></mark>xác định một trường mật khẩu</p>
+     <form>
+      <input type="password" value="Mật khẩu" max="10"> 
+      <input type="submit">
+     </form>
+
+     <h2>7) Kiểu reset</h2>
+     <p><mark>&ltinput type="reset"></mark></p>
+     <form>
+      <input type="text">
+      <input type="submit">
+      <input type="reset">
+
+      <h2>8)Button tạo nút</h2>
+      <p><mark>&lt;input type="button">xác định một nút</mark></p>
+      <p>Thường dùng trong JavaScript</p>
+      <input type="button" onclick="alert('Hello World!')" value="Nakroth">
+      <p><b>Button bên ngoài form</b></p>
+      <p>VD:<mark>  &lt;button onclick="alert('Hello World!')" >Name của cái nút&lt;/button></p></mark>
+       <button onclick="alert('Hello Nakroth')"  >Nhấn! </button>
+
+     </form>
+
+     <h2>9) Tạo khung nhập liệu  textarea  </h2>
+     <p><b>Cách dùng</b></p>
+     <pre>
+      <mark>&lt;textarea name="message" rows="10" cols="30">
+        Bạn có thể nhập nội dung
+        gồm nhiều dòng.
+        &lt;/textarea></mark>
+     </pre>
+     <p>Trong đó rows chỉ định số dòng có thể nhìn thấy của khung và cols là chiều rộng của khung</p>
+     <p><b>Chú ý</b>: mày có thể dùng thuộc tính style để thiết kế chiều rộng và chiều cao của khung</p>
+     <form> 
+     <textarea  rows="3" cols="30">Nhập nội dung</textarea>
+     <input type="submit" value="Gữi">
+    </form>
+     
+
+    <h2>10) Phần tử select</h2>
+    <p>Dùng để tạo danh sách thả xuống</p>
+    <p><b>Để cho nó chọn trc thì ta thêm selected vào trong thẻ mở của option</b></p>
+    <select>
+       <option>PUBG</option>
+       <option>Liên Quân</option>
+       <option selected>Đua Xe</option>
+    </select>
+    <p><b>Nâng cao hơn</b></p>
+    <select>
+      <optgroup label="Game">
+          <option>PUBG</option>
+          <option>Liên Quân</option>
+          <option>Đua Xe</option>
+    </optgroup>
+
+    <optgroup label="Phim">
+      <option>Ma</option>
+      <option>Hài</option>
+      <option>Tình cảm</option>
+   </optgroup>  
+   </select>
+   <p><b>Sữ dụng size để hiển thị số giá trị có thể nhìn thấy</b></p>
+   <select size="3">
+    <optgroup label="Game">
+        <option>PUBG</option>
+        <option>Liên Quân</option>
+        <option>Đua Xe</option>
+        <option>Nuôi rồng</option>
+        <option selected>CS GO</option>
+  </optgroup></select>
+  <p><b>Sử dụng thuộc tính <mark>multiple</mark>  
+    để cho phép người dùng chọn nhiều giá trị, cái nằm trong thẻ mở của select</b></p>
+     
+
+    <h2>11) Phần tử &lt;fieldset> và &lt;legend> </h2>
+    <p>Phần<mark> &lt;fieldset></mark>tử được sử dụng để nhóm dữ liệu liên quan trong một biểu mẫu.</p>
+
+    <p>  Phần <mark> &lt;legend></mark>tử xác định chú thích cho &lt;fieldset> phần tử.</p>
+
+      <b>VD:</b>
+      <form>
+        <fieldset style="width: 300px;">
+             <legend>Nakroth</legend>
+             <input type="text" placeholder="Tên"><br>
+             <input type="password" placeholder="Mật Khẩu"><br>
+             <input type="submit" value="Đăng Nhập">
+        </fieldset>
+      </form>
+
+      <h2>12) Một số cái hay gặp</h2>
+      <p>Thuộc tính <mark>autofocus</mark>: trình duyệt sẽ tự động chuyển con trỏ tới thẻ &lt;input> chứa thuộc tính.</p>
+      <p>Thuộc tính <mark> multiple</mark>: cho phép người dùng chọn một hoăc nhiều giá trị trong thẻ &lt;input></p>
+      <p>Thuộc tính <mark>required</mark>: để quy định một thẻ bắt buộc phải nhập nội dung trước khi submit form</p>
+      <p>Thuộc tính<mark> maxlength</mark>: sử dụng để thiết lập số ký tự tối đa cho một thẻ input</p>
+      <p>Thuộc tính <mark>file</mark>: tải file lên với ràng buộc kiểu dl file bằng 
+      cách sữ dụng <mark>accept</mark> vd: accept=".jpg,.png"</p>
+      
+      
+      <h2><b>Sản phẩm sau khi học form</b></h2>
+      <form>
+          <fieldset>
+               <legend>Sản phẩm</legend>
+               <table>
+                <tr>
+                 <th>Họ và Tên:</th>
+                 <td><input type="text" maxlength="20" placeholder="Nhập tên" autofocus required></td>
+                </tr>
+                <tr>
+                  <th>Mật khẩu:</th>
+                  <td><input type="password" placeholder="Mật khẩu từ 10 - 20 ký tự" maxlength="10" required ></td>
+                </tr>
+                <tr>
+                  <th>Chọn game mà bạn thích chơi:</th>
+                  <td>
+                       <select required>
+                             <option>--Chon--</option>
+                             
+                                <option>PUBG</option>
+                                <option>Liên Quân</option>
+                                <option>CS GO</option>
+                              
+                       </select>
+                  </td>
+                </tr>
+                <tr>
+                    <th>Giới Tính:</th>
+                    <td><input type="radio" name="sex">Nam <input type="radio" name="sex">Nữ <input type="radio" name="sex">Giới tính khác</td>
+                </tr>
+                <tr>
+                   <th>Ngày sinh:</th>
+                   <td><input type="date"></td>
+                </tr>
+                <tr>
+                  <th>Chọn ảnh đại điện</th>
+                  <td><input type="file" accept=".jpg,.png"</td>
+                </tr>
+                <tr>
+                  <th>Số điện thoại:</th>
+                  <td><input type="text" placeholder="Nhập số điện thoại"></td>
+                </tr>
+                <tr>
+                  <th>Email</th>
+                  <td><input type="email" placeholder="Nhập địa chỉ email"></td>
+                </tr>
+                <tr>
+                  <th colspan="2"><input type="submit" value="Đăng Nhập"><input type="reset"></th>
+                   
+              
+
+               </table>
+                
+          </fieldset>
+      </form>
+     
+
+      <h1>Kết thúc bài về HTML</h1>
+
+
+      
+
+      
+
+  </body>
+</html>

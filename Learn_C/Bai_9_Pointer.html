@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pointer</title>
+    <style>
+      /* body {
+        background-image: url(photto/mo.jpg);
+       
+        background-size: 100%;
+      } */
+      pre {
+        background-color: rgb(11, 9, 9);
+        color: rgb(142, 89, 215);
+        width: 100%;
+        height: 50%;
+      }
+      i {
+          color: aliceblue;
+      }
+      h3 {
+        
+        text-shadow: 2px 2px 5px rgb(255, 69, 106);
+        text-align: center;
+        font-size: 30px;
+      }
+      h1 {
+        text-align: center;
+        text-shadow: 2px 2px 5px violet;
+        font-size: 50px;
+      }
+    </style>
+    
+    </style>
+  </head>
+  <body>
+    <h1>Pointer</h1>
+    <a href="Bai_9.1_Pointer.html">Bài tập cơ bản về con trỏ</a>
+    <p>
+      <b>Con trỏ</b> cho phép xây dựng hàm truyền tham chiếu giúp thay đổi giá
+      trị của một đối số sau khi hàm kết thúc
+    </p>
+    <p>
+      <b>Biến con trỏ:</b>Con trỏ là 1 biến đặc biệt được dùng để chứa địa chỉ
+      của biến hoặc hàm
+    </p>
+    <p>
+      Khi con trỏ chứa địa chỉ của 1 ô nhớ (biến), ta nói là: con trỏ đang trỏ
+      tới (hay tham chiếu tới) ô nhớ (biến) đó
+    </p>
+    <p>Khi khai báo biến con trỏ</p>
+    <p>
+      <b
+        >Kích thước của biến con trỏ không phụ thuộc vào kiểu dữ liệu, luôn có
+        kích thước cố định là 2 byte</b
+      >
+    </p>
+
+    <div>
+      <h3>Mảng và con trỏ</h3>
+      <b>Có 2 cách in ra địa chỉ và giá trị của mảng:</b>
+      <p>Địa chỉ của mảng: <b>&a[i] <=> a+i</b></p>
+      <p>Giá trị của mảng: <b>a[i] <=> *(a+i)</b></p>
+    </div>
+    <div>
+      <h2>Cách sữ dụng hàm QuickSort có sẳn trong C</h2>
+      <p>Sắp xếp tăng dần:</p>
+      <p>Nếu x và y đúng thứ tự mong muốn thì return -1</p>
+      <p>Nếu x và y không đúng thứ tự mong muốn thì return 1</p>
+      <p>Sắp xếp theo thứ tự tăng dần: return *x - *y   </p>
+      <p>Sắp xếp theo thứ tự giảm dần: return *y - *x   </p>
+      <p>Sắp xếp theo thứ tự trị tuyệt đối tăng dần: return abs(*x) - abs(*y)</p>
+      
+      <pre> <br>
+        #include < stdio.h >
+          #include < stdlib.h > <i>// Lưu ý khai báo thư viện stdlib.h</i>
+          int comp(const void *a, const void *b)
+          {
+              <i>// Ép 2 con trỏ void về lại int</i>
+              int *x = (int*)a;
+              int *y = (int*)b;
+              <i>//if(*x > *y) return -1;
+                 //else reuturn 1;</i>
+              return *x - *y; <i>// Sắp xếp tăng dần</i>
+              //return *y - *x; <i>//là sắp xếp giảm dần</i>
+              //return  
+          }
+          int main()
+          {
+              int n; scanf("%d",&n);
+              int a[n];
+              for(int i=0;i < n;i++) scanf("%d",a+i);
+              qsort(a,n,sizeof(int),comp);
+              for(int i=0;i < n;i++) printf("%d ",a[i]);
+          }
+      </pre>
+      
+    </div>
+  </body>
+</html>

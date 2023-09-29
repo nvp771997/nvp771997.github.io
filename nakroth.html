@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>NVP</title>
+    <link rel="icon" href="photto/iconhacker.png" />
+    <link rel="stylesheet" href="css/index.css" />
+     
+  </head>
+  <body>
+    <div>
+    <div>
+      <nav class="cl1">
+        <ul>
+          <li><a href="">Home</a></li>
+          <li><a href="Data_Struct.html" target="_blank">Data Structures</a></li>
+          <li><a href="Algorithm.html" target="_blank">Algorithms</a></li>
+          <li><a href="html.html">HTML</a></li>
+          <li><a href="css.html">CSS</a></li>
+          <li><a href="https://fullstack.edu.vn/learning/html-css?id=576d3b13-76ad-4b08-a87c-c78177933ce3" target="_blank">F8</a></li>
+          <li><a href="https://www.geeksforgeeks.org/" target="_blank">GeeksforGeeks</a></li>
+          <li><a href="https://translate.google.com/?hl=vi" target="_blank">Translate</a></li>
+          <li><a href="C.html" target="_blank">C</a></li>
+          <li><a href="https://www.geeksforgeeks.org/c-programming-language/?ref=ghm" target="_blank">Web học C</a></li>
+          <li><a href="English.html" target="_blank">English</a></li>
+          <li><a href="https://www.programiz.com/c-programming" target="_blank">Programiz C</a></li>
+          <li><a href="https://www.cs.usfca.edu/~galles/visualization/Algorithms.html" target="_blank">Mô hình cấu trúc</a></li>
+          <li><a href="https://visualgo.net/en/sorting" target="_blank">Mô hình đơn giản các thuật toán</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div>Nakroth</div>
+    
+  </div>
+  <script>
+  // Ngăn chặn sự kiện chuột phải
+document.addEventListener('contextmenu', function(event) {
+  event.preventDefault();
+});
+
+// Ngăn chặn sự kiện chuột trái kéo thả để chọn văn bản
+document.addEventListener('selectstart', function(event) {
+  event.preventDefault();
+});
+document.addEventListener('keydown', function(event) {
+  if (event.ctrlKey && event.keyCode === 85) {
+    event.preventDefault();
+  }
+});
+
+  </script>
+  </body>
+</html>

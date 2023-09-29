@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Struct</title>
+    <style>
+       .syntax {
+        color: red;
+       }
+      pre {
+        background-color: rgb(11, 9, 9);
+        color: rgb(142, 89, 215);
+        width: 100%;
+        height: 50%;
+      }
+      i {
+          color: aliceblue;
+      }
+      h3 {
+        
+        text-shadow: 2px 2px 5px rgb(255, 69, 106);
+        text-align: center;
+        font-size: 30px;
+      }
+      h1 {
+        text-align: center;
+        text-shadow: 2px 2px 5px violet;
+        font-size: 50px;
+      }
+      h2 {
+        text-align: center;
+        text-shadow: 2px 2px 5px rgb(29, 226, 11);
+        font-size: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Struct</h1>
+    <p><a href="Bai_11.1_Struct.html">Các thao tác cơ bản trên mảng Struct</a></p>
+    <p><a href="Bai_11.2_Struct.html">Các hàm sắp xếp trong Struct</a></p>
+    <p>- Kiểu cấu trúc (Structure) là kiểu dữ liệu bao gồm nhiều thành phần có kiểu khác nhau, 
+      mỗi thành phần được gọi là một trường (field)</p>
+      <b>- Cho phép you tự định nghĩa kiểu dữ liệu mới</b>
+    <h3>Cú pháp</h3>
+    <pre> <br>
+                <i class="syntax">struct</i> struct_name{
+                      <i>// Danh sách các thuộc tính</i>
+                };
+
+    </pre>
+    <p>Để truy cập vào các trường dữ liệu của struct ta dùng toán tử '.'</p>
+    <pre><br>
+      #include < stdio.h >
+      #include < string.h >
+      #include < ctype.h >
+      #include < stdlib.h >
+        <i>// Khai báo struct</i>
+        struct sinhvien{
+             char ten[70];
+            char lop[70];
+            double gpa;
+        };
+        typedef struct sinhvien sinhvien; <i>//Định nghĩa tên mới của struct sinhvien</i>
+        int main()
+        { 
+          sinhvien x;
+          gets(x.ten);
+          gets(x.lop);
+          scanf("%lf",&x.gpa);
+          printf("%s %s %.2lf\n",x.ten,x.lop,x.gpa);
+        }
+        
+     <i> Input: 
+            Nakroth
+            CNTT HA
+            2.7
+      Output: Nakroth CNTT HA 2.70</i>
+    </pre>
+    <h3>Mảng Struct</h3>
+    <pre>
+      #include < stdio.h >
+      #include < string.h >
+      #include < ctype.h >
+      #include < stdlib.h >
+        <i>// Khai báo struct</i>
+        struct sinhvien{
+             char ten[70];
+            char lop[70];
+            double gpa;
+        };
+        typedef struct sinhvien sinhvien; <i>//Định nghĩa tên mới của struct sinhvien</i>
+        int main()
+        { 
+           int n; 
+           printf("Nhap so luong sv: "); scanf("%d",&n);
+           sinhvien a[n];
+           for(int i=0;i < n;i++)
+           {
+             getchar(); <i>//Xóa phím enter</i>
+             printf("Nhap ten: "); gets(a[i].ten);
+             printf("Nhap lop: "); gets(a[i].lop);
+             printf("Nhap gpa: "); scanf("%lf",&a[i].gpa); <i>//Chôi lệnh nếu ko dùng getchar()</i>
+           }
+           printf("Danh sach sinh vn:\n");
+           for(int i=0;i < n;i++){
+            printf("%s %s %.2lf\n",a[i].ten, a[i].lop, a[i].gpa);
+           }
+        }
+    </pre>
+    <h3>Hàm nhập thông tin và xuất thông tin SV</h3>
+    <pre><br>
+      #include < stdio.h >
+      #include < string.h >
+      #include < ctype.h >
+      #include < stdlib.h >
+        <i>// Khai báo struct</i>
+        struct sinhvien{
+             char ten[70];
+            char lop[70];
+            double gpa;
+        };
+        typedef struct sinhvien sinhvien; <i>//Định nghĩa tên mới của struct sinhvien</i>
+        <i>//Hàm nhập thông tin</i>
+        sinhvien nhap(){
+            sinhvien x; //Biến tạm
+            printf("Nhap ten: "); gets(x.ten);
+            printf("Nhap lop: "); gets(x.lop);
+            printf("Nhap gpa: "); scanf("%lf",&x.gpa);
+            return x;
+        }
+        <i>//Hàm in thông tin</i>
+        void in(sinhvien x){
+            printf("%s %s %.2lf\n",x.ten, x.lop, x.gpa);
+        }
+        int main()
+        { 
+           int n; 
+           printf("Nhap so luong sv: "); scanf("%d",&n);
+           sinhvien a[n];
+        
+           for(int i=0;i < n;i++)
+           {
+             getchar(); <i>// Xóa phím enter sau hàm scanf</i>
+             a[i] = nhap(); <i>//Phải gán lại cho a[i]</i>
+           }
+           printf("Danh sach sinh vn:\n");
+           for(int i=0;i < n;i++){
+             in(a[i]);
+           }
+        }
+    </pre>
+    <h3>Con trỏ kiểu Struct</h3>
+    <p>Tương tự như kiểu dữ liệu thông thường, bạn có thể khai báo con trỏ struct.
+       Nhưng khi truy cập vào các trường dữ liệu của biến con trỏ struct ta
+        dùng <b><i class="syntax">-></i></b> thay vì dùng toán tử <mark>'.'</mark>
+    </p>
+    <pre><br>
+      #include < stdio.h >
+      #include < string.h >
+      #include < ctype.h >
+      #include < stdlib.h >
+        struct sinhvien{
+            char ten[70];
+            char lop[70];
+            double gpa;
+        };
+        typedef struct sinhvien sinhvien;
+        int main()
+        {
+            sinhvien x;
+            strcpy(x.ten, "The Assassin Naktoh");
+            strcpy(x.lop, "Class07");
+            x.gpa = 3.7;
+            sinhvien *ptr = &x;
+            <i>//Có thể truy cập trường dữ liệu của biến con trỏ bằng dấu -></i>
+            printf("%s %s %.2lf\n",ptr<i class="syntax">-></i>ten, ptr<i class="syntax">-></i>lop, ptr<i class="syntax">-></i>gpa);
+            printf("%s %s %.2lf\n",(<i class="syntax">*</i>ptr).ten, (<i class="syntax">*</i>ptr).lop, (<i class="syntax">*</i>ptr).gpa); //Có thể giải tham chiếu con trỏ ptr và truy cập bằng '.'
+        }
+    </pre>
+    <h3>Hàm nhập thông tin và xuất thông tin SV bằng cách truyền tham chiếu bằng con trỏ</h3>
+    <pre>
+       
+      #include < stdio.h >
+      #include < string.h >
+      #include < ctype.h >
+      #include < stdlib.h >
+        <i>// Khai báo struct</i>
+        struct sinhvien{
+             char ten[70];
+            char lop[70];
+            double gpa;
+        };
+        typedef struct sinhvien sinhvien; <i>//Định nghĩa tên mới của struct sinhvien</i>
+        <i>//Hàm nhập thông tin</i>
+        void nhap(sinhvien <i class="syntax">*</i>x){
+            printf("Nhap ten: "); gets(x<i class="syntax">-></i>ten);
+            printf("Nhap lop: "); gets(x<i class="syntax">-></i>lop);
+            printf("Nhap gpa: "); scanf("%lf",&x<i class="syntax">-></i>gpa);
+        }
+        <i>//Hàm in thông tin</i>
+        void in(sinhvien x){
+            printf("%s %s %.2lf\n",x.ten, x.lop, x.gpa);
+        }
+        int main()
+        { 
+           int n; 
+           printf("Nhap so luong sv: "); scanf("%d",&n);
+           sinhvien a[n];
+        
+           for(int i=0;i < n;i++)
+           {
+             getchar(); <i>// Xóa phím enter sau hàm scanf</i>
+             nhap(<i class="syntax">&</i>a[i]); <i>//Truyền địa chỉ của a[i]</i>
+           }
+           printf("Danh sach sinh vn:\n");
+           for(int i=0;i < n;i++){
+             in(a[i]);
+           }
+        }
+        
+    </pre>
+    </pre>
+  </body>
+</html>
