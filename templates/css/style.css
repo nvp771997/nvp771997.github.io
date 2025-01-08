@@ -1,0 +1,28 @@
+/* Hello */
+* {
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+}
+
+html {
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+.header{
+   background-color: aqua;
+   height: 70px;
+}
+.sidebar{
+   background-color: red;
+   height: 20px;
+}
+.content{
+   background-color: violet;
+   height: 200px;
+}
+.footer{
+   background-color: aqua;
+   height: 200px;
+    
+}
